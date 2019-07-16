@@ -39,17 +39,6 @@ const config = {
       }
     },
 
-    { level: 3,
-      name: "Administrator", 
-      check: (message) => {
-        try {
-          const adminRole = message.guild.roles.find(r => r.name.toLowerCase() === message.settings.adminRole.toLowerCase());
-          return (adminRole && message.member.roles.has(adminRole.id));
-        } catch (e) {
-          return false;
-        }
-      }
-    },
     // This is the server owner.
     { level: 4,
       name: "Server Owner", 
