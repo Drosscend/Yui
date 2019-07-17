@@ -1,29 +1,80 @@
+"use strict";
+
 const { version } = require("discord.js");
 const moment = require("moment");
-require("moment-duration-format");
+  require("moment-duration-format");
+const os = require("os");
 
-exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
-  const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-  message.channel.send(`= STATISTICS =
-• Mem Usage  :: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
-• Uptime     :: ${duration}
-• Users      :: ${client.users.size.toLocaleString()}
-• Servers    :: ${client.guilds.size.toLocaleString()}
-• Channels   :: ${client.channels.size.toLocaleString()}
-• Discord.js :: v${version}
-• Node       :: ${process.version}`, {code: "asciidoc"});
+exports.run = (client, message) => {
+
+  const duration = moment.duration(client.uptime).format(" D [Jour(s)], H [heure(s)], m [minute(s)], s [secondes]");
+
+  message.channel.send({
+    embed: {
+      color: 0xDF9C9D,
+      thumbnail: {
+        url: client.user.displayAvatarURL
+      },
+      author: {
+        name: message.author.username,
+        icon_url: message.author.displayAvatarURL
+      },
+      footer: {
+        icon_url: client.user.displayAvatarURL,
+        text: client.user.username
+      },
+      timestamp: new Date(),
+      description: `<:browser1:600349429597470740> **Voici mes différentes statistiques**`,
+      fields: [
+        {
+          name: "Uptime",
+          value: duration,
+        }, {
+          name: "CPU",
+          value: `${(os.loadavg()[0] * os.cpus().length / 100).toFixed(2)}%`,
+          inline: true,
+        }, {
+          name: "RAM",
+          value: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,
+          inline: true,
+        }, {
+          name: "Version",
+          value: `Discord.js: \`${version}\` | NodeJS: \`${process.version}\` | Bot: \`${require('../package.json').version}\``,
+        }, {
+          name: "Config",
+          value: `\`\`\`${os.cpus()[0].model}\`\`\``,
+        }, {
+          name: "Utilisateurs",
+          value: client.users.size.toLocaleString(),
+          inline: true,
+        }, {
+          name: "Serveurs",
+          value: client.guilds.size.toLocaleString(),
+          inline: true,
+        }, {
+          name: "Channels",
+          value: client.channels.size.toLocaleString(),
+          inline: true
+        }, {
+          name: "Emojies",
+          value: client.emojis.size.toLocaleString(),
+          inline: true,
+        }    
+    ]
+    }
+  })
 };
 
 exports.conf = {
-  enabled: false,
+  enabled: true,
   guildOnly: false,
-  aliases: [],
+  aliases: ["debug"],
   permLevel: "User"
 };
 
 exports.help = {
   name: "stats",
-  category: "Miscelaneous",
-  description: "Gives some useful bot statistics",
+  category: "Bot",
+  description: "Donne quelques statistiques utiles sur moi.",
   usage: "stats"
 };
