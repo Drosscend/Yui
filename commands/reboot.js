@@ -1,5 +1,7 @@
-exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
-  await message.reply("Bot is shutting down.");
+"use strict";
+
+exports.run = async (client, message) => {
+  await message.reply("<:settings:600349289394470923> je vais me coucher.");
   await Promise.all(client.commands.map(cmd =>
     client.unloadCommand(cmd)
   ));
@@ -15,7 +17,7 @@ exports.conf = {
 
 exports.help = {
   name: "reboot",
-  category: "System",
-  description: "Shuts down the bot. If running under PM2, bot will restart automatically.",
+  category: "Bot",
+  description: "Arrête le bot. Si le bot fonctionne sous PM2, il redémarre automatiquement.",
   usage: "reboot"
 };

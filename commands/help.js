@@ -1,41 +1,109 @@
-/*
-The HELP command is used to display every command's name and description
-to the user, so that he may see what commands are available. The help
-command is also filtered by level, so if a user does not have access to
-a command, it is not shown to them. If a command name is given with the
-help command, its extended help is shown.
-*/
+"use strict";
 
 exports.run = (client, message, args, level) => {
-  // If no specific command is called, show all filtered commands.
   if (!args[0]) {
-    // Filter all commands by which are available for the user's level, using the <Collection>.filter() method.
-    const myCommands = message.guild ? client.commands.filter(cmd => client.levelCache[cmd.conf.permLevel] <= level) : client.commands.filter(cmd => client.levelCache[cmd.conf.permLevel] <= level &&  cmd.conf.guildOnly !== true);
-
-    // Here we have to get the command names only, and we use that array to get the longest name.
-    // This make the help commands "aligned" in the output.
-    const commandNames = myCommands.keyArray();
-    const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0);
-
-    let currentCategory = "";
-    let output = `= Command List =\n\n[Use ${message.settings.prefix}help <commandname> for details]\n`;
-    const sorted = myCommands.array().sort((p, c) => p.help.category > c.help.category ? 1 :  p.help.name > c.help.name && p.help.category === c.help.category ? 1 : -1 );
-    sorted.forEach( c => {
-      const cat = c.help.category.toProperCase();
-      if (currentCategory !== cat) {
-        output += `\u200b\n== ${cat} ==\n`;
-        currentCategory = cat;
-      }
-      output += `${message.settings.prefix}${c.help.name}${" ".repeat(longest - c.help.name.length)} :: ${c.help.description}\n`;
+    let embedFields = [];
+    embedFields.push({
+      name: "**Système**",
+      value: client.commands.filter(filters => filters.help.category === "System")
+        .map(name => name.help.name).join(", "),
     });
-    message.channel.send(output, {code: "asciidoc", split: { char: "\u200b" }});
-  } else {
-    // Show individual command's help.
+    embedFields.push({
+      name: "**Bot**",
+      value: client.commands.filter(filters => filters.help.category === "Bot")
+        .map(name => name.help.name).join(", "),
+    });
+//    embedFields.push({
+//      name: "**Modération**",
+//      value: client.commands.filter(filters => filters.help.category === "Modération")
+//       .map(name => name.help.name).join(", "),
+//    });
+//    embedFields.push({
+//      name: "**Divers**",
+//     value: client.commands.filter(filters => filters.help.category === "Divers")
+//        .map(name => name.help.name).join(", "),
+//    });
+//    embedFields.push({
+//      name: "**Fun**",
+//      value: client.commands.filter(filters => filters.help.category === "Fun")
+//        .map(name => name.help.name).join(", "),
+//    });
+//    embedFields.push({
+//      name: "**Musique**",
+//      value: client.commands.filter(filters => filters.help.category === "Music")
+//        .map(name => name.help.name).join(", "),
+//    });
+
+    message.channel.send({
+      embed: {
+        color: 0xDF9C9D,
+        thumbnail: {
+          url: client.user.displayAvatarURL
+        },
+        author: {
+          name: message.author.username,
+          icon_url: message.author.displayAvatarURL
+        },
+        footer: {
+          icon_url: client.user.displayAvatarURL,
+          text: client.user.username
+        },
+        timestamp: new Date(),
+        description: `Utilisez \`${message.settings.prefix}help <command>\` pour plus de détails sur une commande. | ${client.commands.size} commandes.`,
+        fields: embedFields,
+      }
+    });
+  }
+  if (args[0]) {
     let command = args[0];
     if (client.commands.has(command)) {
       command = client.commands.get(command);
-      if (level < client.levelCache[command.conf.permLevel]) return;
-      message.channel.send(`= ${command.help.name} = \n${command.help.description}\nusage:: ${command.help.usage}\naliases:: ${command.conf.aliases.join(", ")}\n= ${command.help.name} =`, {code:"asciidoc"});
+
+      message.channel.send({
+        embed: {
+          color: 0xDF9C9D,
+          thumbnail: {
+            url: client.user.displayAvatarURL
+          },
+          author: {
+            name: message.author.username,
+            icon_url: message.author.displayAvatarURL
+          },
+          footer: {
+            icon_url: client.user.displayAvatarURL,
+            text: client.user.username
+          },
+          description: `Description de la commande **${command.help.name}**`,
+          timestamp: new Date(),
+          fields: [{
+            name: "**Description:**",
+            value: `${command.help.description}`
+          }, {
+            name: "**Usage:**",
+            value: `${command.help.usage}`,
+          }, {
+            name: "**Category:**",
+            value: `${command.help.category}`,
+            inline: true
+          }, {
+            name: "**Aliases:**",
+            value: `${command.conf.aliases == 0 ? "Aucun" : command.conf.aliases}`,
+            inline: true
+          }, {
+            name: "**Enabled:**",
+            value: `${command.conf.enabled === true ? "<:online:600352893673013268> Oui" : "<:dnd:600352893450715146> Non"}`,
+            inline: true
+          }, {
+            name: "**GuildOnly:**",
+            value: `${command.conf.guildOnly}`,
+            inline: true
+          }, {
+            name: "**Perm level:**",
+            value: `${command.conf.permLevel}`,
+            inline: true
+          }]
+        }
+      });
     }
   }
 };
@@ -49,7 +117,7 @@ exports.conf = {
 
 exports.help = {
   name: "help",
-  category: "System",
-  description: "Displays all the available commands for your permission level.",
-  usage: "help [command]"
+  category: "Bot",
+  description: "Affiche toutes les commandes disponibles pour votre niveau d'autorisation.",
+  usage: "help [commande]"
 };
