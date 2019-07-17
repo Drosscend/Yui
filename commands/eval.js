@@ -1,32 +1,37 @@
-// The EVAL command will execute **ANY** arbitrary javascript code given to it.
-// THIS IS PERMISSION LEVEL 10 FOR A REASON! It's perm level 10 because eval
-// can be used to do **anything** on your machine, from stealing information to
-// purging the hard drive. DO NOT LET ANYONE ELSE USE THIS
+"use strict";
 
-
-// However it's, like, super ultra useful for troubleshooting and doing stuff
-// you don't want to put in a command.
-exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
+exports.run = async (client, message, args) => {
   const code = args.join(" ");
+  if (code.length === 0) return message.channel.send("<:warn:600349289427894272> Aucun code à évaluer veuillez en fournir un.");
   try {
-    const evaled = eval(code);
-    const clean = await client.clean(client, evaled);
-    message.channel.send(`\`\`\`js\n${clean}\n\`\`\``);
+    let evaled = eval(code);
+    if (typeof evaled !== 'string');
+    evaled = require('util').inspect(evaled);
+    evaled = evaled.replace(client.token, "Non mon token reste privée.");
+    const MAX_CHARS = 8 + evaled.length;
+    if (MAX_CHARS > 2000) {
+      message.channel.send("<:download:600349429329035345> Trop de caractères dans le résultat de l'évaluation vous pouvez téléchargez le fichier joint pour avoir tout les détails.", { files: [{ attachment: Buffer.from(evaled), name: "output.txt" }] });
+    };
+    message.channel.send(`\`\`\`js\n${evaled.substr(0, 1850)}\`\`\``).then(async (res) => {
+      await res.react('✅')
+    });
   } catch (err) {
-    message.channel.send(`\`ERROR\` \`\`\`xl\n${await client.clean(client, err)}\n\`\`\``);
-  }
+    message.channel.send(`\`\`\`js\n${err}\`\`\``).then(async (res) => {
+      await res.react("❌");
+    });
+  };
 };
 
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: [],
+  aliases: ["e"],
   permLevel: "Bot Owner"
 };
 
 exports.help = {
   name: "eval",
   category: "Bot",
-  description: "Evaluates arbitrary javascript.",
+  description: "Évalue le code Javascript.",
   usage: "eval [...code]"
 };

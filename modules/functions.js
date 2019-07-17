@@ -46,20 +46,6 @@ module.exports = (client) => {
     }
   };
 
-  client.clean = async (client, text) => {
-    if (text && text.constructor.name == "Promise")
-      text = await text;
-    if (typeof evaled !== "string")
-      text = require("util").inspect(text, {depth: 1});
-
-    text = text
-      .replace(/`/g, "`" + String.fromCharCode(8203))
-      .replace(/@/g, "@" + String.fromCharCode(8203))
-      .replace(client.token, "Non mon token reste privée.");
-
-    return text;
-  };
-
   client.loadCommand = (commandName) => {
     try {
       client.logger.log(`Commande ${commandName} chargée.`);
