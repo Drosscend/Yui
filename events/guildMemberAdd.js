@@ -3,7 +3,7 @@
 const Canvas = require('canvas');
 const axios = require('axios');
 
-module.exports = (client, member) => {
+module.exports = async(client, member) => {
 
   const settings = client.getSettings(member.guild);
 
@@ -21,7 +21,7 @@ module.exports = (client, member) => {
     const SizeCtx = canvas.getContext('2d');
     let fontSize = 18;
     do {
-        SizeCtx.font = `bold ${fontSize -= 2}pt sans serif`;
+        SizeCtx.font = `bold ${fontSize -= 2}pt`;
     } while (SizeCtx.measureText(text).width > canvas.width - 15);
     return SizeCtx.font;
   }
@@ -51,9 +51,9 @@ module.exports = (client, member) => {
 
   member.guild.channels.find(c => c.name === settings.welcomeChannel).send({
     files: [{
-      attachment: await Welcome(message.author),
+      attachment: await Welcome(member.user),
       name: "welcome.png"
   }]
-  }).catch(console.error);
+  });
 
 };
