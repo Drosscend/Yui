@@ -20,6 +20,7 @@
   ],
   "license": "GPL-3.0",
   "dependencies": {
+    "asciiart-logo": "^0.2.6",
     "better-sqlite3": "^5.4.0",
     "chalk": "^2.4.2",
     "discord.js": "^11.5.1",
