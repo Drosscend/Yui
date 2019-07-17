@@ -12,7 +12,6 @@ const defaultSettings = {
   "systemNotice": "true",
   "levelnotice": "false",
   "welcomeChannel": "welcome",
-  "welcomeMessage": "Dites bienvenue à {{user}}!",
   "welcomeEnabled": "false"
 };
 
