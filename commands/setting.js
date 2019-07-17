@@ -71,7 +71,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["settings", "conf"],
+  aliases: ["settings"],
   permLevel: "Server Owner"
 };
 
