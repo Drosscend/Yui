@@ -5,12 +5,14 @@ const fs = require("fs");
 let baseConfig = fs.readFileSync("./config_base.txt", "utf8");
 
 const defaultSettings = {
-  "prefix": "~",
+  "prefix": "yui!",
   "modLogChannel": "mod-log",
-  "modRole": "Moderator",
+  "LogChannel": "log",
+  "modRole": "Moderateur",
   "systemNotice": "true",
+  "levelnotice": "false",
   "welcomeChannel": "welcome",
-  "welcomeMessage": "Say hello to {{user}}, everyone! We all need a warm welcome sometimes :D",
+  "welcomeMessage": "Dites bienvenue à {{user}}!",
   "welcomeEnabled": "false"
 };
 
@@ -25,34 +27,34 @@ let prompts = [
   {
     type: "list",
     name: "resetDefaults",
-    message: "Do you want to reset default settings?",
-    choices: ["Yes", "No"]
+    message: "Voulez-vous réinitialiser les paramètres par défaut ?",
+    choices: ["Oui", "Non"]
   },
   {
     type: "input",
     name: "token",
-    message: "Please enter the bot token from the application page."
+    message: "Veuillez entrer le bot token à partir de la page d'application."
   },
   {
     type: "input",
     name: "ownerID",
-    message: "Please enter the bot owner's User ID"
+    message: "Veuillez entrer le nom d'utilisateur du propriétaire du bot."
   },
 ];
 
 (async function () {
-  console.log("Setting Up GuideBot Configuration...");
+  console.log("Configuration de Yui...");
   await settings.defer;
   if (!settings.has("default")) {
     prompts = prompts.slice(1);
-    console.log("First Start! Inserting default guild settings in the database...");
+    console.log("Insertion des paramètres par défaut de la guilde dans la base de données...");
     await settings.set("default", defaultSettings);
   }
 
   const answers = await inquirer.prompt(prompts);
 
   if (answers.resetDefaults && answers.resetDefaults === "Yes") {
-    console.log("Resetting default guild settings...");
+    console.log("Réinitialisation des paramètres par défaut des guildes...");
     await settings.set("default", defaultSettings);
   }
 
@@ -61,7 +63,7 @@ let prompts = [
     .replace("{{token}}", `"${answers.token}"`);
 
   fs.writeFileSync("./config.js", baseConfig);
-  console.log("REMEMBER TO NEVER SHARE YOUR TOKEN WITH ANYONE!");
-  console.log("Configuration has been written, enjoy!");
+  console.log("N'OUBLIEZ JAMAIS DE NE JAMAIS PARTAGER VOTRE TOKEN AVEC QUI QUE CE SOIT !");
+  console.log("La configuration a été écrite, profitez-en !");
   await settings.close();
 }());

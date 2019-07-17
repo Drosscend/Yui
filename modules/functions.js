@@ -38,12 +38,14 @@ module.exports = (client) => {
   // And then they're stuck because the default settings are also gone.
   // So if you do that, you're resetting your defaults. Congrats.
   const defaultSettings = {
-    "prefix": "~",
+    "prefix": "yui!",
     "modLogChannel": "mod-log",
-    "modRole": "Moderator",
+    "LogChannel": "log",
+    "modRole": "Moderateur",
     "systemNotice": "true",
+    "levelnotice": "false",
     "welcomeChannel": "welcome",
-    "welcomeMessage": "Say hello to {{user}}, everyone! We all need a warm welcome sometimes :D",
+    "welcomeMessage": "Dites bienvenue à {{user}}!",
     "welcomeEnabled": "false"
   };
 
