@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
 
     if (!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send("<:forbidden:600349288823783449> Je n'es pas la permission **BAN_MEMBERS** sur ce serveur.");
     if (!args[0]) {
-        return message.channel.send("<:warn:600349289427894272>Veuillez indiquer le nom d\'une personne.");
+        return message.channel.send("<:warn:600349289427894272> Veuillez indiquer le nom d\'une personne.");
     }
 
     const search = args.slice(0)[0];
@@ -30,33 +30,39 @@ exports.run = async (client, message, args) => {
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "Aucune raison";
 
-    member.ban(reason).then(message.channel.send(`<:banhamer:600352893140205572> **${member.user.username}** est bien ban, pour la raison: ${reason}.`),
+    member.ban(reason).then( () => {
+        message.channel.send(`<:banhamer:600352893140205572> **${member.user.username}** est bien ban, pour la raison: ${reason}`)
 
-    member.guild.channels.find(c => c.name === settings.modLogChannel).send({
-        embed: {
-            color: 0xDF9C9D,
-            thumbnail: {
-              url: member.user.displayAvatarURL
-            },
-            footer: {
-              icon_url: client.user.displayAvatarURL,
-              text: client.user.username
-            },
-            timestamp: new Date(),
-            fields: [
-                {
-                  name: "Autheur du ban:",
-                  value: message.author.username,
-                }, {
-                    name: "Raison du ban:",
+        if (!member.guild.channels.find(c => c.name === settings.modLogChannel)) return message.channel.send("Si vous voulez avoir un récapitulatif des sanctions merci de créer un channel mod-log ou d'en configurer un avec la commande \"setting\".")
+            
+        message.guild.channels.find(c => c.name === settings.modLogChannel).send({
+            embed: {
+                color: 0xDF9C9D,
+                thumbnail: {
+                    url: member.user.displayAvatarURL
+                },
+                footer: {
+                    icon_url: client.user.displayAvatarURL,
+                    text: client.user.username
+                },
+                timestamp: new Date(),
+                fields: [
+                    {
+                    name: "Autheur du ban:",
                     value: message.author.username,
-                }, {
+                    }, {
+                    name: "Raison du ban:",
+                    value: reason,
+                    }, {
                     name: "Victime du ban:",
                     value: member.user.username,
-                }
-            ]
-        }
-    }))
+                    }
+                ]
+            }
+        })
+
+    })
+    
 };
 
 exports.conf = {
