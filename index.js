@@ -38,6 +38,15 @@ const init = async () => {
     client.on(eventName, event.bind(null, client));
   });
 
+  const Modules = await readdir("./modules/");
+  client.logger.log(`Chargements d'un total de ${Modules.length} modules.`, "log");
+  Modules.forEach(file => {
+    const moduleName = file.split(".")[0];
+    client.logger.log(`Chargement du module: ${moduleName}.`);
+    const fonctions = require(`./modules/${file}`);
+    client[file.split('.')[0]] = fonctions;
+  });
+  
   client.levelCache = {};
   for (let i = 0; i < client.config.permLevels.length; i++) {
     const thisLevel = client.config.permLevels[i];

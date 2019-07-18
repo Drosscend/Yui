@@ -52,7 +52,7 @@ module.exports = async(client, member) => {
   member.guild.channels.find(c => c.name === settings.welcomeChannel).send({
     files: [{
       attachment: await Welcome(member.user),
-      name: "welcome.png"
+      name: "goodbye.png"
   }]
   });
 
