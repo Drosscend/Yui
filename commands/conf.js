@@ -87,7 +87,7 @@ exports.conf = {
 
 exports.help = {
   name: "conf",
-  category: "System",
+  category: "Owner",
   description: "Modifiez la configuration par défaut pour toutes les guildes.",
   usage: "conf <add/edit/del> <key> <value>"
 };

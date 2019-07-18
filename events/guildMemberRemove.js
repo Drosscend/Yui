@@ -31,10 +31,10 @@ module.exports = async(client, member) => {
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = '#303030';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = responsiveText(canvas, `Bienvenue ${data.tag}`);//responsive text
+    ctx.font = responsiveText(canvas, `A bientôt ${data.tag}`);//responsive text
     ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'center';
-    ctx.fillText(`Bienvenue ${data.tag}`, 200, 184);
+    ctx.fillText(`A bientôt ${data.tag}`, 200, 184);
     ctx.beginPath();
     ctx.arc(195, 84, 68, 0, Math.PI * 2, true);
     ctx.closePath();

@@ -4,8 +4,8 @@ exports.run = (client, message, args, level) => {
   if (!args[0]) {
     let embedFields = [];
     embedFields.push({
-      name: "**Système**",
-      value: client.commands.filter(filters => filters.help.category === "System")
+      name: "**Owner**",
+      value: client.commands.filter(filters => filters.help.category === "Owner")
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({
