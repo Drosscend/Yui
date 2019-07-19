@@ -74,7 +74,7 @@ exports.conf = {
 
 exports.help = {
   name: "ban",
-  category: "Modérasion",
+  category: "Modération",
   description: "Ban la personne identifier avec possibilité de mettre une raison.",
   usage: "ban [member] (raison)"
 };

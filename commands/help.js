@@ -15,7 +15,7 @@ exports.run = (client, message, args, level) => {
     });
     embedFields.push({
       name: "**Modération**",
-      value: client.commands.filter(filters => filters.help.category === "Modérasion")
+      value: client.commands.filter(filters => filters.help.category === "Modération")
        .map(name => name.help.name).join(", "),
     });
     embedFields.push({

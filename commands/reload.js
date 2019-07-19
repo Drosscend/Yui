@@ -21,7 +21,7 @@ exports.conf = {
 
 exports.help = {
   name: "reload",
-  category: "Bot",
+  category: "Owner",
   description: "Recharge une commande qui a été modifiée.",
   usage: "reload [commande]"
 };
