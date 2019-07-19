@@ -23,11 +23,11 @@ exports.run = (client, message, args, level) => {
      value: client.commands.filter(filters => filters.help.category === "Divers")
         .map(name => name.help.name).join(", "),
     });
-//    embedFields.push({
-//      name: "**Fun**",
-//      value: client.commands.filter(filters => filters.help.category === "Fun")
-//        .map(name => name.help.name).join(", "),
-//    });
+    embedFields.push({
+      name: "**Fun**",
+      value: client.commands.filter(filters => filters.help.category === "Fun")
+        .map(name => name.help.name).join(", "),
+    });
 //    embedFields.push({
 //      name: "**Musique**",
 //      value: client.commands.filter(filters => filters.help.category === "Music")
