@@ -74,7 +74,7 @@ exports.conf = {
 
 exports.help = {
   name: "kick",
-  category: "Modéraion",
+  category: "Modérasion",
   description: "kick la personne identifier avec possibilité de mettre une raison.",
   usage: "kick [member] (raison)"
 };
