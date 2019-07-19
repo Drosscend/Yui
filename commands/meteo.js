@@ -51,9 +51,6 @@ exports.run = async (client, message, args) => {
         message.channel.send({
             embed: {
                 color: 0xDF9C9D,
-                thumbnail: {
-                    url: client.user.displayAvatarURL
-                },
                 author: {
                     name: message.author.username,
                     icon_url: message.author.displayAvatarURL
