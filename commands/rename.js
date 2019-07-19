@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
 
     client.user.setUsername(name).then(name => {
         message.channel.send(`Mon nom à bien été changé par **${name}**.`)
-    }).catch().catch((e) => {
+    }).catch((e) => {
         message.channel.send(`<:warn:600349289427894272> Une erreur est survenue avec le nom **${name}**: \`\`\`${e}\`\`\``)
     });
 
