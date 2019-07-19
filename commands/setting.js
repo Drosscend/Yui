@@ -16,7 +16,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
     
     if (!client.settings.has(message.guild.id)) client.settings.set(message.guild.id, {});
 
-    client.settings.set(message.guild.id, joinedValue, key);
+    client.settings.set(message.guild.id, joinedValue, key);a
 
     message.reply(`${key} à bien été éditée à ${joinedValue}.`);
   } else
