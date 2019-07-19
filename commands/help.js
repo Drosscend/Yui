@@ -18,11 +18,11 @@ exports.run = (client, message, args, level) => {
       value: client.commands.filter(filters => filters.help.category === "Modérasion")
        .map(name => name.help.name).join(", "),
     });
-//    embedFields.push({
-//      name: "**Divers**",
-//     value: client.commands.filter(filters => filters.help.category === "Divers")
-//        .map(name => name.help.name).join(", "),
-//    });
+    embedFields.push({
+      name: "**Divers**",
+     value: client.commands.filter(filters => filters.help.category === "Divers")
+        .map(name => name.help.name).join(", "),
+    });
 //    embedFields.push({
 //      name: "**Fun**",
 //      value: client.commands.filter(filters => filters.help.category === "Fun")
