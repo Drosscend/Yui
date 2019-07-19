@@ -19,6 +19,8 @@ client.aliases = new Enmap();
 
 client.settings = new Enmap({name: "settings"});
 
+client.cooldown = {bingo: {}};
+
 const init = async () => {
 
   const cmdFiles = await readdir("./commands/");
