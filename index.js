@@ -9,15 +9,20 @@ const client = new Discord.Client({
   disableEveryone: true,
   fetchAllMembers: true
 });
+
 client.config = require("./config.js");
+
 client.logger = require("./modules/Logger");
 
 require("./modules/functions.js")(client);
 
 client.commands = new Enmap();
+
 client.aliases = new Enmap();
 
 client.settings = new Enmap({name: "settings"});
+
+client.ranking = new Enmap({name: "ranking"});
 
 client.cooldown = {bingo: {}};
 

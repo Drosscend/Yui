@@ -21,4 +21,13 @@ module.exports = async client => {
 
   client.user.setActivity(`${client.settings.get("default").prefix}help`, {type: "PLAYING"});
   
+  client.guilds.filter(g => !client.ranking.has(g.id))
+  .forEach((g) => {
+      client.ranking.set(g.id, {
+          members: {}
+      });
+      console.log(`[Database]["ranking"]: ${g.name} configuration ajoutée à la database`);
+  });
+  //console.log(client.ranking);
+
 };
