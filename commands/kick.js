@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
 
     const settings = client.getSettings(message.guild);
 
-    if (!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send("<:forbidden:600349288823783449> Je n'es pas la permission **BAN_MEMBERS** sur ce serveur.");
+    if (!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.channel.send("<:forbidden:600349288823783449> Je n'es pas la permission **KICK_MEMBERS** sur ce serveur.");
     if (!args[0]) {
         return message.channel.send("<:warn:600349289427894272> Veuillez indiquer le nom d\'une personne.");
     }
@@ -25,13 +25,13 @@ exports.run = async (client, message, args) => {
         }
     };
 
-    if (member.hasPermission("MANAGE_GUILD")) return message.channel.send("<:forbidden:600349288823783449> Je ne peux pas le ban, il doit avoir la permission de gérer le serveur.");
+    if (member.hasPermission("MANAGE_GUILD")) return message.channel.send("<:forbidden:600349288823783449> Je ne peux pas le kick, il doit avoir la permission de gérer le serveur.");
 
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "Aucune raison";
 
-    member.ban(reason).then( () => {
-        message.channel.send(`<:banhamer:600352893140205572> **${member.user.username}** est bien ban, pour la raison: ${reason}`)
+    member.kick(reason).then( () => {
+        message.channel.send(`:boot: **${member.user.username}** est bien kick, pour la raison: ${reason}`)
 
         if (!member.guild.channels.find(c => c.name === settings.modLogChannel)) return message.channel.send("Si vous voulez avoir un récapitulatif des sanctions merci de créer un channel **mod-log** ou d'en configurer un avec la commande \"setting\".")
             
@@ -48,13 +48,13 @@ exports.run = async (client, message, args) => {
                 timestamp: new Date(),
                 fields: [
                     {
-                    name: "Autheur du ban:",
+                    name: "Autheur du kick:",
                     value: message.author.username,
                     }, {
-                    name: "Raison du ban:",
+                    name: "Raison de l'expulsion:",
                     value: reason,
                     }, {
-                    name: "Victime du ban:",
+                    name: "Victime du kick:",
                     value: member.user.username,
                     }
                 ]
@@ -73,8 +73,8 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "ban",
+  name: "kick",
   category: "Modéraion",
-  description: "Ban la personne identifier avec possibilité de mettre une raison.",
-  usage: "ban [member] (raison)"
+  description: "kick la personne identifier avec possibilité de mettre une raison.",
+  usage: "kick [member] (raison)"
 };
