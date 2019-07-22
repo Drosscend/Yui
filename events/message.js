@@ -48,8 +48,6 @@ module.exports = async (client, message) => {
   
   /*Début du système de rank*/
 
-  if (settings.welcomeEnabled !== "true") return;
-
   if (!client.ranking.get(message.guild.id).members[message.author.id]) {
     const database = client.ranking.get(message.guild.id);
     //console.log(database);
@@ -63,7 +61,7 @@ module.exports = async (client, message) => {
         cooldown: 0,
     };
     client.ranking.set(message.guild.id, database);
-    console.log(`[Database] Member ${message.author.tag} add database`);
+    //console.log(`[Database] Member ${message.author.tag} add database`);
 }
 
 const userdb = client.ranking.get(message.guild.id);
@@ -71,7 +69,7 @@ const userdb = client.ranking.get(message.guild.id);
 if ((userdb.members[message.author.id].cooldown > Date.now()) && (userdb.members[message.author.id].cooldown !== 0)) {
     userdb.members[message.author.id].cooldown - new Date().getTime();
 } else {
-    userdb.members[message.author.id].cooldown = Date.now() + 2000;
+    userdb.members[message.author.id].cooldown = Date.now();
     userdb.members[message.author.id].exp += 10;
     if (userdb.members[message.author.id].exp >= userdb.members[message.author.id].nextexp) {
         userdb.members[message.author.id].nextexp = ((userdb.members[message.author.id].nextlevel*200)/2) + 19;
@@ -79,6 +77,8 @@ if ((userdb.members[message.author.id].cooldown > Date.now()) && (userdb.members
         userdb.members[message.author.id].exp = 0;
         userdb.members[message.author.id].level++;
         userdb.members[message.author.id].nextlevel++;
+
+        if (settings.levelnotice !== "true") return;
         message.channel.send(`Niveau suivant pour ${message.author.tag} => ${userdb.members[message.author.id].level}`);
     }
     client.ranking.set(message.guild.id, userdb);
