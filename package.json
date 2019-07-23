@@ -33,6 +33,7 @@
     "moment": "^2.24.0",
     "moment-duration-format": "^2.3.2",
     "request": "^2.88.0",
+    "snekfetch": "^4.0.4",
     "weather-js": "^2.0.0"
   }
 }
