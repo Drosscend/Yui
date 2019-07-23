@@ -26,7 +26,7 @@ exports.run = async (client, message, args) => {
 
     if (member.hasPermission("MANAGE_GUILD")) return message.channel.send("<:forbidden:600349288823783449> Je ne peux pas le unmute, il doit avoir la permission de gérer le serveur.");
 
-    message.guild.channels.forEach(ch => ch.overwritesPermissions({SEND_MESSAGES:null}));
+    message.guild.channels.forEach(ch => ch.overwritePermissions(member.user, {SEND_MESSAGES:null,ADD_REACTIONS:null}));
 
     message.channel.send(`**${member.user.tag}** est bien unmute.`);
 
@@ -66,7 +66,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "mute",
+  name: "unmute",
   category: "Modération",
   description: "Unmute un membre !",
   usage: "unmute [membre] (reason)"
