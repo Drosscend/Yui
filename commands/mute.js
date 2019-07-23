@@ -75,5 +75,5 @@ exports.help = {
   name: "mute",
   category: "Modération",
   description: "Empêche le membre de parler pendant un certain temps !",
-  usage: "mute [@membre] [time] (reason)"
+  usage: "mute [@membre] (reason)"
 };
