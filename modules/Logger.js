@@ -8,7 +8,7 @@ exports.log = (content, type = "log") => {
   const timestamp = `[${moment().format("YYYY-MM-DD HH:mm:ss")}]:`;
   switch (type) {
     case "log": {
-      return console.log(`${timestamp} ${chalk.bgBlue(type.toUpperCase())} ${content} `);
+      return console.log(`${timestamp} ${chalk.black.bgBlue(type.toUpperCase())} ${content} `);
     }
     case "warn": {
       return console.log(`${timestamp} ${chalk.black.bgYellow(type.toUpperCase())} ${content} `);
@@ -20,10 +20,10 @@ exports.log = (content, type = "log") => {
       return console.log(`${timestamp} ${chalk.green(type.toUpperCase())} ${content} `);
     }
     case "cmd": {
-      return console.log(`${timestamp} ${chalk.black.bgWhite(type.toUpperCase())} ${content}`);
+      return console.log(`${timestamp} ${chalk.black.bgYellow(type.toUpperCase())} ${content}`);
     }
     case "ready": {
-      return console.log(`${timestamp} ${chalk.black.bgGreen(type.toUpperCase())} ${content}`);
+      return console.log(`${timestamp} ${chalk.black.bgMagenta(type.toUpperCase())} ${content}`);
     }
     default: throw new TypeError("Le type de log ne peut $etre que \"warn\",\"debug\",\"log\",\"ready\",\"cmd\",\"error\".");
   }
