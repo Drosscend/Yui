@@ -73,5 +73,5 @@ exports.help = {
   name: "bingo",
   category: "Fun",
   description: "Jouer au bingo :)",
-  usage: "bingo [limite]z"
+  usage: "bingo [limite]"
 };
