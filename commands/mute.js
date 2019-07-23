@@ -49,13 +49,13 @@ exports.run = async (client, message, args) => {
                 timestamp: new Date(),
                 fields: [
                     {
-                    name: "Autheur du mute:",
+                    name: "Modérateur:",
                     value: message.author.username,
                     }, {
                     name: "Raison du mute:",
                     value: reason,
                     }, {
-                    name: "Victime du mute:",
+                    name: "Membre:",
                     value: member.user.username,
                     }
                 ]
