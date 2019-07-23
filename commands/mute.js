@@ -75,5 +75,5 @@ exports.help = {
   name: "mute",
   category: "Modération",
   description: "Empêche le membre de parler",
-  usage: "mute [@membre] (reason)"
+  usage: "mute [membre] (reason)"
 };
