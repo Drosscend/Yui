@@ -68,6 +68,6 @@ exports.conf = {
 exports.help = {
   name: "unmute",
   category: "Modération",
-  description: "Unmute un membre !",
+  description: "Unmute un membre dans un salon!",
   usage: "unmute [membre] (reason)"
 };
