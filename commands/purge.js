@@ -26,5 +26,5 @@ exports.help = {
   name: "purge",
   category: "Modération",
   description: "Supprime un certain nombre de messages dans le salon où la commande à été effectuer.",
-  usage: "purge [number]"
+  usage: "purge [nomber]"
 };
