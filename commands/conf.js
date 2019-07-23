@@ -8,7 +8,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
   
   if (action === "add") {
     if (!key) return message.reply("<:warn:600349289427894272> Veuillez spécifier une clé à ajoutée.");
-    if (!settings[key]) return message.reply("<:warn:600349289427894272> Cette clé existe déja dans les réglages.");
+    if (!defaults[key]) return message.reply("<:warn:600349289427894272> Cette clé existe déja dans les réglages.");
     if (joinedValue.length < 1) return message.reply("<:warn:600349289427894272> Veuillez spécifier une valeur.");
 
     defaults[key] = value.join(" ");
@@ -19,7 +19,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
   
   if (action === "edit") {
     if (!key) return message.reply("<:warn:600349289427894272> Veuillez spécifier une clé à édité.");
-    if (!settings[key]) return message.reply("<:warn:600349289427894272> Cette clé n'existe pas dans les réglages.");
+    if (!defaults[key]) return message.reply("<:warn:600349289427894272> Cette clé n'existe pas dans les réglages.");
     if (joinedValue.length < 1) return message.reply("<:warn:600349289427894272> Veuillez spécifier une nouvelle valeur.");
 
     defaults[key] = value.join(" ");
@@ -30,7 +30,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
   
   if (action === "del") {
     if (!key) return message.reply("<:warn:600349289427894272> Veuillez spécifiez une clée à supprimée.");
-    if (!settings[key]) return message.reply("<:warn:600349289427894272> Cette clé n'existe pas dans les réglages.");
+    if (!defaults[key]) return message.reply("<:warn:600349289427894272> Cette clé n'existe pas dans les réglages.");
     
     const response = await client.awaitReply(message, `<:warn:600349289427894272> Êtes-vous sûr de vouloir supprimé \`${key}\`?. Répondres par **oui** ou **non**`);
 
@@ -50,7 +50,6 @@ exports.run = async (client, message, [action, key, ...value]) => {
       message.reply("Action annulée.");
     }
   } else{
-    //await message.channel.send(`***__Bot Default Settings__***\n\`\`\`json\n${inspect(defaults)}\n\`\`\``);
     await message.channel.send({
       embed: {
         color: 0xDF9C9D,

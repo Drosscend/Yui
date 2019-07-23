@@ -21,7 +21,7 @@ exports.run = async (client, message) => {
             fields: [
                 {
                     name: "**Lien avec toute les permission nécessaire:**",
-                    value: `[Clique ici](https://discordapp.com/oauth2/authorize?client_id=584819038560190466&scope=bot&permissions=334884055)`,
+                    value: `[Clique ici](https://discordapp.com/oauth2/authorize/?permissions=2117463295&scope=bot&client_id=584819038560190466)`,
                 }, {
                     name: "**Lien sans permission:**",
                     value: `[Clique ici](https://discordapp.com/oauth2/authorize?client_id=584819038560190466&scope=bot&permissions=0)`,
