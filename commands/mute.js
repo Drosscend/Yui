@@ -74,6 +74,6 @@ exports.conf = {
 exports.help = {
   name: "mute",
   category: "Modération",
-  description: "Empêche le membre de parler pendant un certain temps !",
+  description: "Empêche le membre de parler",
   usage: "mute [@membre] (reason)"
 };
