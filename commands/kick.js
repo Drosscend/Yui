@@ -30,12 +30,13 @@ exports.run = async (client, message, args) => {
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "Aucune raison";
 
+    var modlogs = message.guild.channels.find(c => c.name === settings.modLogChannel);
+    if (!modlogs) return message.channel.send("Si vous voulez avoir un récapitulatif des sanctions merci de créer un channel **mod-log** ou d'en configurer un avec la commande \"setting\".")
+    
     member.kick(reason).then( () => {
         message.channel.send(`:boot: **${member.user.username}** est bien kick, pour la raison: ${reason}`)
-
-        if (!member.guild.channels.find(c => c.name === settings.modLogChannel)) return message.channel.send("Si vous voulez avoir un récapitulatif des sanctions merci de créer un channel **mod-log** ou d'en configurer un avec la commande \"setting\".")
             
-        message.guild.channels.find(c => c.name === settings.modLogChannel).send({
+        modlogs.send({
             embed: {
                 color: 0xDF9C9D,
                 thumbnail: {
