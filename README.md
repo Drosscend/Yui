@@ -7,7 +7,7 @@
 
 - `git` Installation en ligne de commande ([Windows](https://git-scm.com/download/win)|[Linux](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)|[MacOS](https://git-scm.com/download/mac)).
 - `node` [Version 8.0.0 ou supérieur](https://nodejs.org)
-- Les outils de construction node-gyp. C'est un pré-requis pour Enmap, mais aussi pour d'autres modules. RLisez [The Enmap Guide](https://enmap.evie.codes/install#pre-requisites) pour plus de détail pour votre os. Il suffit de suivre ce qu'il y a dans le bloc à onglets seulement, puis de revenir ici !
+- Les outils de construction node-gyp. C'est un pré-requis pour Enmap, mais aussi pour d'autres modules. Lisez [The Enmap Guide](https://enmap.evie.codes/install#pre-requisites) pour plus de détail pour votre os. Il suffit de suivre ce qu'il y a dans le bloc à onglets seulement, puis de revenir ici !
 
 Vous avez aussi besoin du token de votre bot. Ceci est obtenu en créant une application dans
 la section Développeurs de discordapp.com.

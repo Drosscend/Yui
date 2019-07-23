@@ -20,14 +20,5 @@ module.exports = async client => {
   client.logger.log(`${client.user.tag} est prête à servir ${client.users.size -1} utilisateurs dans ${client.guilds.size} serveurs.`, "ready");
 
   client.user.setActivity(`${client.settings.get("default").prefix}help`, {type: "PLAYING"});
-  
-  client.guilds.filter(g => !client.ranking.has(g.id))
-  .forEach((g) => {
-      client.ranking.set(g.id, {
-          members: {}
-      });
-      console.log(`[Database]["ranking"]: ${g.name} configuration ajoutée à la database`);
-  });
-  //console.log(client.ranking);
 
 };
