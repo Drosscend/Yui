@@ -36,7 +36,17 @@ let prompts = [
   {
     type: "input",
     name: "ownerID",
-    message: "Veuillez entrer le nom d'utilisateur du propriétaire du bot."
+    message: "Veuillez entrer l'id du propriétaire du bot."
+  },
+  {
+    type: "input",
+    name: "admins",
+    message: "Veuillez entrer l'id de l'amin du bot."
+  },
+  {
+    type: "input",
+    name: "support",
+    message: "Veuillez entrer l'id' du support du bot."
   },
 ];
 
@@ -58,6 +68,8 @@ let prompts = [
 
   baseConfig = baseConfig
     .replace("{{ownerID}}", answers.ownerID)
+    .replace("{{admins}}", answers.admins)
+    .replace("{{support}}", answers.support)
     .replace("{{token}}", `"${answers.token}"`);
 
   fs.writeFileSync("./config.js", baseConfig);

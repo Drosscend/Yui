@@ -1,9 +1,9 @@
 const config = {
   "ownerID": "{{ownerID}}",
 
-  "admins": [],
+  "admins": [{{admins}}],
 
-  "support": [],
+  "support": [{{support}}],
 
   "token": {{token}},
 
