@@ -77,7 +77,7 @@ exports.conf = {
 
 exports.help = {
   name: "setting",
-  category: "Bot",
+  category: "Config",
   description: "Afficher ou modifier les paramètres de votre serveur.",
   usage: "setting <edit/reset> <key> <value>"
 };

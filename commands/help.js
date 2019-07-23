@@ -3,14 +3,21 @@
 exports.run = (client, message, args, level) => {
   if (!args[0]) {
     let embedFields = [];
-    embedFields.push({
-      name: "**Owner**",
-      value: client.commands.filter(filters => filters.help.category === "Owner")
-        .map(name => name.help.name).join(", "),
-    });
+    if (message.author.id == message.client.config.ownerID) {
+      embedFields.push({
+        name: "**Owner**",
+        value: client.commands.filter(filters => filters.help.category === "Owner")
+          .map(name => name.help.name).join(", "),
+      });
+    }
     embedFields.push({
       name: "**Bot**",
       value: client.commands.filter(filters => filters.help.category === "Bot")
+        .map(name => name.help.name).join(", "),
+    });
+    embedFields.push({
+      name: "**Configuration**",
+      value: client.commands.filter(filters => filters.help.category === "Config")
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({

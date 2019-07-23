@@ -43,7 +43,7 @@ module.exports = async (client, message) => {
   while (args[0] && args[0][0] === "-") {
     message.flags.push(args.shift().slice(1));
   }
-  client.logger.cmd(`[CMD] ${client.config.permLevels.find(l => l.level === level).name} ${message.author.username} exécute la commande ${cmd.help.name}.`);
+  client.logger.cmd(`[CMD] ${client.config.permLevels.find(l => l.level === level).name} ${message.author.username} exécute la commande ${cmd.help.name} dans le serveur ${message.guild.name}.`);
   cmd.run(client, message, args, level);
 
 };
