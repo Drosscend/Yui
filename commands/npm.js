@@ -86,7 +86,7 @@ exports.conf = {
 
 exports.help = {
   name: "npm",
-  category: "Utiles",
+  category: "Divers",
   description: "Affiche des informations à propos d'un packet npm.",
   usage: "npm"
 };
