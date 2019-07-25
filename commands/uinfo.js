@@ -79,11 +79,11 @@ exports.run = async (client, message, args) => {
                     inline: true
                 }, {
                     name: "A rejoint discord le:",
-                    value: moment(user.createdAt).format("MMMM Do YYYY"),
+                    value: moment(user.createdAt).format("Do MMMM YYYY"),
                     inline: true
                 }, {
                     name: "A rejoint le serveur le:",
-                    value: moment(message.guild.members.get(user.id).joinedAt).format("MMMM Do YYYY"),
+                    value: moment(message.guild.members.get(user.id).joinedAt).format("Do MMMM YYYY"),
                     inline: true
                 }, {
                     name: "Roles:",

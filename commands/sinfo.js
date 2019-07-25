@@ -72,7 +72,7 @@ exports.run = async (client, message, args) => {
                         inline: true
                     }, {
                         name: "Serveur créé le:",
-                        value: moment(message.guild.createdAt).format("MMMM Do YYYY"),
+                        value: moment(message.guild.createdAt).format("Do MMMM YYYY"),
                         inline: true
                     }, {
                         name: "Propriétaire du serveur:",
