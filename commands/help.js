@@ -35,6 +35,16 @@ exports.run = (client, message, args, level) => {
       value: client.commands.filter(filters => filters.help.category === "Fun")
         .map(name => name.help.name).join(", "),
     });
+    embedFields.push({
+      name: "**Images**",
+      value: client.commands.filter(filters => filters.help.category === "Images")
+        .map(name => name.help.name).join(", "),
+    });
+    embedFields.push({
+      name: "**ImagesNSFW**",
+      value: client.commands.filter(filters => filters.help.category === "ImagesNSFW")
+        .map(name => name.help.name).join(", "),
+    });
 //    embedFields.push({
 //      name: "**Musique**",
 //      value: client.commands.filter(filters => filters.help.category === "Music")
