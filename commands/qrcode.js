@@ -25,7 +25,7 @@ exports.conf = {
 
 exports.help = {
   name: "qrcode",
-  category: "Fun",
+  category: "Utiles",
   description: "Affiche un QR Code avec votre mot !",
   usage: "qrcode [texte]"
 };
