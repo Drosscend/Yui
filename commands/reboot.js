@@ -17,7 +17,7 @@ exports.conf = {
 
 exports.help = {
   name: "reboot",
-  category: "Bot",
+  category: "Owner",
   description: "Arrête le bot. Si le bot fonctionne sous PM2, il redémarre automatiquement.",
   usage: "reboot"
 };

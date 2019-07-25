@@ -9,7 +9,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
   if (action === "add") {
     if (!key) return message.reply("<:warn:600349289427894272> Veuillez spécifier une clé à ajoutée.");
     if (!defaults[key]) return message.reply("<:warn:600349289427894272> Cette clé existe déja dans les réglages.");
-    if (joinedValue.length < 1) return message.reply("<:warn:600349289427894272> Veuillez spécifier une valeur.");
+    if (value.length < 1) return message.reply("<:warn:600349289427894272> Veuillez spécifier une valeur.");
 
     defaults[key] = value.join(" ");
   
@@ -20,12 +20,12 @@ exports.run = async (client, message, [action, key, ...value]) => {
   if (action === "edit") {
     if (!key) return message.reply("<:warn:600349289427894272> Veuillez spécifier une clé à édité.");
     if (!defaults[key]) return message.reply("<:warn:600349289427894272> Cette clé n'existe pas dans les réglages.");
-    if (joinedValue.length < 1) return message.reply("<:warn:600349289427894272> Veuillez spécifier une nouvelle valeur.");
+    if (value.length < 1) return message.reply("<:warn:600349289427894272> Veuillez spécifier une nouvelle valeur.");
 
     defaults[key] = value.join(" ");
 
     client.settings.set("default", defaults);
-    message.reply(`${key} à bien été éditée à${value.join(" ")}.`);
+    message.reply(`${key} à bien été éditée à ${value.join(" ")}.`);
   } else
   
   if (action === "del") {

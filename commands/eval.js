@@ -31,7 +31,7 @@ exports.conf = {
 
 exports.help = {
   name: "eval",
-  category: "Bot",
+  category: "Owner",
   description: "Évalue le code Javascript.",
   usage: "eval [...code]"
 };

@@ -72,7 +72,7 @@ exports.conf = {
   enabled: true,
   guildOnly: true,
   aliases: ["settings"],
-  permLevel: "Server Owner"
+  permLevel: "Administrateur"
 };
 
 exports.help = {
