@@ -54,6 +54,7 @@ module.exports = async(client, member) => {
       attachment: await Welcome(member.user),
       name: "welcome.png"
   }]
+  
   });
 
 };

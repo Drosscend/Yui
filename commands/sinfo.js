@@ -46,7 +46,7 @@ exports.run = async (client, message, args) => {
                 description: `Voici les différentes informations de **${message.guild.name}**`,
                 color: 0xDF9C9D,
                 thumbnail: {
-                    url: client.user.displayAvatarURL
+                    url: message.guild.iconURL
                 },
                 author: {
                     name: message.author.username,

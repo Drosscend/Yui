@@ -54,9 +54,6 @@ module.exports = async(client, member) => {
       attachment: await Welcome(member.user),
       name: "goodbye.png"
   }]
-  }).catch (err) ;{
-    message.channel.send(`<:warn:600349289427894272> Une erreur est survenue: \`\`\`${err}\`\`\``)
-    console.log(err)
-};
+  })
 
 };

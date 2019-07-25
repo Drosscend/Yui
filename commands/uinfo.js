@@ -49,7 +49,7 @@ exports.run = async (client, message, args) => {
             embed: {
                 color: 0xDF9C9D,
                 thumbnail: {
-                    url: client.user.displayAvatarURL
+                    url: user.displayAvatarURL
                 },
                 author: {
                     name: message.author.username,
