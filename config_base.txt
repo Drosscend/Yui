@@ -1,9 +1,9 @@
 const config = {
   "ownerID": "{{ownerID}}",
 
-  "admins": [{{admins}}],
+  "admins": ["{{admins}}"],
 
-  "support": [{{support}}],
+  "support": ["{{support}}"],
 
   "token": {{token}},
 
@@ -24,7 +24,17 @@ const config = {
         }
       }
     },
-
+    { level: 3,
+      name: "Administrateur", 
+      check: (message) => {
+        try {
+          const adminRole = message.guild.roles.find(r => r.name.toLowerCase() === message.settings.adminRole.toLowerCase());
+          return (adminRole && message.member.roles.has(adminRole.id));
+        } catch (e) {
+          return false;
+        }
+      }
+    },
     { level: 4,
       name: "Server Owner", 
       check: (message) => message.channel.type === "text" ? (message.guild.ownerID === message.author.id ? true : false) : false
