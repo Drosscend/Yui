@@ -13,7 +13,6 @@ exports.run = async (client, message, args) => {
     message.guild.createEmoji(url, name).then(emote => {
         message.channel.send(`Émoji **${emote.name}** ajouté au serveur !`);
     }).catch(err => {
-        console.log(err)
         return message.channel.send(`<:forbidden:600349288823783449> L'URL vers l'image est invalide ou vous n'avez plus de place sur votre Discord ou l'image est supérieur à 256 kb!\n \`\`\`js\n${err}\`\`\``);
     });
 };
