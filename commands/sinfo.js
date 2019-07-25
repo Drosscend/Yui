@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
 
         message.channel.send({
             embed: {
-                description: `Voici les différentes informations de guilde: **${message.guild.name}**`,
+                description: `Voici les différentes informations de **${message.guild.name}**`,
                 color: 0xDF9C9D,
                 thumbnail: {
                     url: client.user.displayAvatarURL
