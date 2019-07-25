@@ -1,7 +1,5 @@
 "use strict";
 
-const randomPuppy = require('random-puppy');
-
 exports.run = async (client, message, args) => {
 
     if (!message.channel.nsfw) return message.channel.send(":underage: Commande NSFW. Veuillez passer sur le channel NSFW afin d'utiliser cette commande.")
