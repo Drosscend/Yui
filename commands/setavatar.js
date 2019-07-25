@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
             });
         });
     } catch (err) {
-        message.channel.send(`<:warn:600349289427894272> Une erreur est survenue avec l'avata: \`\`\`${err}\`\`\``)
+        message.channel.send(`<:warn:600349289427894272> Une erreur est survenue avec l'avatar: \`\`\`${err}\`\`\``)
     };
 
 };
