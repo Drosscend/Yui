@@ -29,6 +29,7 @@
     "chalk": "^2.4.2",
     "discord.js": "^11.5.1",
     "enmap": "^5.0.1",
+    "fortnite": "^4.3.2",
     "inquirer": "^6.3.1",
     "moment": "^2.24.0",
     "moment-duration-format": "^2.3.2",

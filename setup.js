@@ -49,6 +49,11 @@ let prompts = [
     name: "support",
     message: "Veuillez entrer l'id' du support du bot."
   },
+  {
+    type: "input",
+    name: "fortnite",
+    message: "Veuillez entrer le token de l'api fortnite."
+  },
 ];
 
 (async function () {
@@ -71,7 +76,8 @@ let prompts = [
     .replace("{{ownerID}}", answers.ownerID)
     .replace("{{admins}}", answers.admins)
     .replace("{{support}}", answers.support)
-    .replace("{{token}}", `"${answers.token}"`);
+    .replace("{{token}}", `"${answers.token}"`)
+    .replace("{{fortnite}}", `"${answers.fortnite}"`);
 
   fs.writeFileSync("./config.js", baseConfig);
   console.log("N'OUBLIEZ JAMAIS DE NE JAMAIS PARTAGER VOTRE TOKEN AVEC QUI QUE CE SOIT !");

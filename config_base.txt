@@ -7,6 +7,8 @@ const config = {
 
   "token": {{token}},
 
+  "fortnite": {{fortnite}}
+
   permLevels: [
     { level: 0,
       name: "User", 
