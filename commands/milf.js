@@ -13,8 +13,8 @@ exports.run = async (client, message, args) => {
     ]
     var sub = subreddits[Math.round(Math.random() * (subreddits.length - 1))];
 
-     randomPuppy(sub)
-        .then(url => {
+    client.pictURL.getImage(sub)
+        .then((image) => {
                 message.channel.send({
                     embed: {
                         color: 0xDF9C9D,
@@ -27,9 +27,9 @@ exports.run = async (client, message, args) => {
                             text: client.user.username
                         },
                         timestamp: new Date(),
-                        description: `Image **milf** générée par **neko-love.xyz**: [Lien de l'image](${url})`,
+                        description: `Image **milf**: [Lien de l'image](${image.url})`,
                         image: {
-                            url: url
+                            url: image.url
                         },
                     }
             })

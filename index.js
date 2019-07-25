@@ -5,6 +5,9 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const Enmap = require("enmap");
 
+const { Provider, Client: PictURLClient } = require("pict-url");
+const Imgur = Provider.Imgur, Pict = new PictURLClient(Imgur);
+
 const client = new Discord.Client({
   disableEveryone: true,
   fetchAllMembers: true
@@ -23,6 +26,8 @@ client.aliases = new Enmap();
 client.settings = new Enmap({name: "settings"});
 
 client.cooldown = {bingo: {}};
+
+client.pictURL = Pict;
 
 const init = async () => {
 
@@ -44,7 +49,7 @@ const init = async () => {
   });
 
   const Modules = await readdir("./modules/");
-  client.logger.log(`Chargements d'un total de ${Modules.length} modules.`, "log");
+  client.logger.log(`Chargements d'un total de ${Modules.length} modules.`);
   Modules.forEach(file => {
     const moduleName = file.split(".")[0];
     client.logger.log(`Chargement du module: ${moduleName}.`);

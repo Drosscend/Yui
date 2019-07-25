@@ -12,25 +12,25 @@ exports.run = async (client, message, args) => {
     ]
     var sub = subreddits[Math.round(Math.random() * (subreddits.length - 1))];
 
-     randomPuppy(sub)
-        .then(url => {
-                message.channel.send({
-                    embed: {
-                        color: 0xDF9C9D,
-                        author: {
-                            name: message.author.username,
-                            icon_url: message.author.displayAvatarURL
-                        },
-                        footer: {
-                            icon_url: client.user.displayAvatarURL,
-                            text: client.user.username
-                        },
-                        timestamp: new Date(),
-                        description: `Image **hentai** générée par **neko-love.xyz**: [Lien de l'image](${url})`,
-                        image: {
-                            url: url
-                        },
-                    }
+    client.pictURL.getImage(sub)
+    .then((image) => {
+            message.channel.send({
+                embed: {
+                    color: 0xDF9C9D,
+                    author: {
+                        name: message.author.username,
+                        icon_url: message.author.displayAvatarURL
+                    },
+                    footer: {
+                        icon_url: client.user.displayAvatarURL,
+                        text: client.user.username
+                    },
+                    timestamp: new Date(),
+                    description: `Image **hentai**: [Lien de l'image](${image.url})`,
+                    image: {
+                        url: image.url
+                    },
+                }
             })
         }) 
 
