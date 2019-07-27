@@ -35,7 +35,7 @@ exports.run = async (client, message, args) => {
                 value: message.guild.id,
                 inline: true,
                 }, {
-                name: "suggestion:",
+                name: "Suggestion:",
                 value: `\`\`\`${suggestionmessage}\`\`\``,
                 }
             ]
