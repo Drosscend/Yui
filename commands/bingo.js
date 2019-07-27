@@ -36,7 +36,7 @@ exports.run = async (client, message, args) => {
                   response = parseInt(response);
 
                   if(isNaN(response)) {
-                      return message.channel.send("Ce n'est pas un nombre!");
+                      return;
                   }
                   else if(response < random) {
                       return message.channel.send("C'est plus!");

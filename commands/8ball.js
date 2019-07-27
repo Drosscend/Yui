@@ -2,17 +2,34 @@
 
 exports.run = async (client, message, args) => {
 
-        // gets the question
-        if(!args[0]) return message.channel.send("<:warn:600349289427894272> Veuillez taper une question!");
+  if(!args[0]) return message.channel.send("<:warn:600349289427894272> Veuillez taper une question!");
 
-        // Gets the list of answers
-        let replies = ["oui.", "non.", "peut-être.", "bien sûr que non.", "je ne sait pas.", "il est probable."];
+  let replies = [
+
+    "j'en suis certain.",
+    "c'est décidément sur.",
+    "sans aucun doute.",
+    "oui, j'en suis sur et certain !",
+    "probablement...",
+    "oui !",
+    "non !",
+    "des signes me font dire oui...",
+    "demandez à nouveau plus tard",
+    "mieux vaut ne pas te le dire maintenant...",
+    "je ne peux pas prédire maintenant.",
+    "concentrez-vous et demandez à nouveau !",
+    "ne compte pas la dessus.",
+    "ma réponse est non.",
+    "mes sources disent que non...",
+    "oh... J'en doute !",
+    "erreur système",
+    "ma base de données vous concernat n'évoque pas de réponces à votre questions :/"
+
+  ];
         
-        // determines which response will be sent
-        let result = Math.floor((Math.random() * replies.length));
+  let result = Math.floor((Math.random() * replies.length));
 
-        // Send the answer
-        message.channel.send(message.author.username+', '+replies[result]);
+  message.channel.send(message.author.username+', '+replies[result]);
 
 };
 
