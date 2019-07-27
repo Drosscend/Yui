@@ -9,6 +9,9 @@ module.exports = async(client, member) => {
 
   if (settings.welcomeEnabled !== "true") return;
 
+  var welcomechannel = member.guild.channels.find(c => c.name === settings.welcomeChannel);
+  if(!welcomechannel) return;
+
   function buffer(data) {
     return axios.get(data, {
         responseType: 'arraybuffer'
@@ -49,12 +52,15 @@ module.exports = async(client, member) => {
     return canvas.toBuffer();
   }
 
-  member.guild.channels.find(c => c.name === settings.welcomeChannel).send({
+  welcomechannel.send({
     files: [{
       attachment: await Welcome(member.user),
       name: "welcome.png"
   }]
-  
-  });
+  }).catch((err) => {
+    if(err) {
+        return;
+    }
+});
 
 };
