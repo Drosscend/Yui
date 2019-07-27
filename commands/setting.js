@@ -18,7 +18,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
 
     client.settings.set(message.guild.id, joinedValue, key);
 
-    message.reply(`${key} à bien été éditée à ${joinedValue}.`);
+    message.reply(`\`${key}\`} à bien été éditée à \`${joinedValue}\`.`);
   } else
   
   if (action === "reset") {
@@ -79,5 +79,5 @@ exports.help = {
   name: "setting",
   category: "Config",
   description: "Afficher ou modifier les paramètres de votre serveur.",
-  usage: "setting <edit/reset> <key> <value>"
+  usage: "setting [edit/reset] [key] [value]"
 };
