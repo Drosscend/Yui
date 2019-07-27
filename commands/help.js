@@ -45,11 +45,11 @@ exports.run = (client, message, args, level) => {
       value: client.commands.filter(filters => filters.help.category === "ImagesNSFW")
         .map(name => name.help.name).join(", "),
     });
-//    embedFields.push({
-//      name: "**Musique**",
-//      value: client.commands.filter(filters => filters.help.category === "Music")
-//        .map(name => name.help.name).join(", "),
-//    });
+    embedFields.push({
+      name: "**Musique**",
+      value: client.commands.filter(filters => filters.help.category === "Music")
+        .map(name => name.help.name).join(", "),
+    });
 
     message.channel.send({
       embed: {
