@@ -40,7 +40,7 @@ exports.run = async (client, message, args) => {
                 }
             ]
         }
-    }).then(message.channel.send("Message envoyée avec succès, merci."))
+    }).then(message.channel.send("Message envoyé avec succès, merci."))
     
 };
 
