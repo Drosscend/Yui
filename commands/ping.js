@@ -2,7 +2,7 @@
 
 exports.run = async (client, message) => {
   const msg = await message.channel.send("Ping?");
-  msg.edit(`Pong! La temps de latence est de ${msg.createdTimestamp - message.createdTimestamp}ms. Le temps de latence de l'API est ${Math.round(client.ping)}ms`);
+  msg.edit(`Pong! Le temps de latence est de ${msg.createdTimestamp - message.createdTimestamp}ms. Le temps de latence de l'API est ${Math.round(client.ping)}ms`);
 };
 
 exports.conf = {
