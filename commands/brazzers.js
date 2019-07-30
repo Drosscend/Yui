@@ -19,12 +19,12 @@ exports.run = async (client, message, args) => {
     };
 
 
-    get(`https://eclyssia-api.tk/api/v1/beautiful?url=${member.user.displayAvatarURL}`, {  responseType: 'arraybuffer'})
+    get(`https://eclyssia-api.tk/api/v1/brazzers?url=${member.user.displayAvatarURL}`, {  responseType: 'arraybuffer'})
         .then((response) => {
             message.channel.send("<:browser1:600349429597470740> Image **cry** générée par **neko-love.xyz**:",{
                 file: {
                     attachment: response.data,
-                    name: "beautiful.png"
+                    name: "brazzers.png"
                 }
             })
         
@@ -40,9 +40,9 @@ exports.conf = {
   };
   
   exports.help = {
-    name: "beautiful",
+    name: "brazzers",
     category: "Images",
-    description: "Affiche une image de type\"beautiful\"",
-    usage: "beautiful"
+    description: "Affiche une image de type\"brazzers\"",
+    usage: "brazzers"
   };
   
