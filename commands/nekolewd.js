@@ -1,8 +1,12 @@
 "use strict";
 const { get } = require("https");
+const talkedRecently = new Set();
 
 exports.run = async (client, message, args) => {
 
+    if (talkedRecently.has(message.author.id)) {
+        return message.channel.send(`${message.author} Attendez 10 secondes avant de taper à nouveau ce qui suit`);
+    }
     if (!message.channel.nsfw) return message.channel.send(":underage: Commande NSFW. Veuillez passer sur le channel NSFW afin d'utiliser cette commande.")
 
     get("https://neko-love.xyz/api/v1/nekolewd", (res) => {
@@ -43,7 +47,11 @@ exports.run = async (client, message, args) => {
     }).on("error", (err) => {
         console.error(err.message);
     });
-
+    talkedRecently.add(message.author.id);
+        setTimeout(() => {
+          
+          talkedRecently.delete(message.author.id);
+        }, 10000);
 };
 
 exports.conf = {

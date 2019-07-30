@@ -1,6 +1,11 @@
 "use strict";
+const talkedRecently = new Set();
 
 exports.run = async (client, message, args) => {
+
+  if (talkedRecently.has(message.author.id)) {
+    return message.channel.send(`${message.author} Attendez 10 secondes avant de taper à nouveau ce qui suit`);
+}
 
     var user = args[0];
     var text = args.slice(1).join(' ');
@@ -18,7 +23,12 @@ exports.run = async (client, message, args) => {
             }]
         }).then( () => m.delete());
     });
-    
+            
+    talkedRecently.add(message.author.id);
+        setTimeout(() => {
+          
+          talkedRecently.delete(message.author.id);
+        }, 10000);
 };
 
 exports.conf = {

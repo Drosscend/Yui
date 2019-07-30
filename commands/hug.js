@@ -1,8 +1,12 @@
 "use strict";
 const { get } = require("https");
+const talkedRecently = new Set();
 
 exports.run = async (client, message, args) => {
 
+    if (talkedRecently.has(message.author.id)) {
+        return message.channel.send(`${message.author} Attendez 10 secondes avant de taper à nouveau ce qui suit`);
+    }
     get("https://neko-love.xyz/api/v1/hug", (res) => {
         const { statusCode } = res;
         if (statusCode != 200) {
@@ -41,7 +45,11 @@ exports.run = async (client, message, args) => {
     }).on("error", (err) => {
         console.error(err.message);
     });
-
+    talkedRecently.add(message.author.id);
+        setTimeout(() => {
+          
+          talkedRecently.delete(message.author.id);
+        }, 10000);
 };
 
 exports.conf = {
