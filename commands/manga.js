@@ -65,11 +65,14 @@ exports.run = async (client, message, args) => {
                     ]
                 }})
 
-            })
+            }).catch(err => {
+                return message.channel.send("<:warn:600349289427894272> Une erreur est survenue avec l'API.");
+            });
 
-        })
+        }).catch(err => {
+            return message.channel.send("<:warn:600349289427894272> Une erreur est survenue avec l'API.");
+        });
     } catch(err) {
-        console.log(err)
         return message.channel.send("<:warn:600349289427894272> Une erreur est survenue avec l'API.");
     }
 }
