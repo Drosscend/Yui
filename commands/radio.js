@@ -45,7 +45,7 @@ exports.run = async (client, message) => {
 
        let args = message.content.split(" ").slice(1).join(" ").toLowerCase();
              
-   if (!args) return message.channel.send(`Voici la liste des radios: **Fun**, **Nrj**, **Nostalgie**, **Skyrock**, **Virgin**`)
+   if (!args) return message.channel.send(`Voici la liste des radios: **Fun**, **Nrj**, **Nostalgie**, **Skyrock**, **Virgin**, **Animenexus**`)
 
      if(!radio[args]) return message.channel.send(`<:warn:600349289427894272> Radio non-valide`)
     
