@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
 
     get(`https://eclyssia-api.tk/api/v1/captcha?url=${member.user.displayAvatarURL}&username=${member.user.username}`, {  responseType: 'arraybuffer'})
         .then((response) => {
-            message.channel.send("<:browser1:600349429597470740> Image **cry** générée par **neko-love.xyz**:",{
+            message.channel.send("<:browser1:600349429597470740> Image **captcha** générée par **eclyssia-api.tk**:",{
                 file: {
                     attachment: response.data,
                     name: "captcha.png"

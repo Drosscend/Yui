@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     const exp = args.slice(0).join("");
     if (!exp) return message.channel.send("<:warn:600349289427894272> Vous devez entrer un calcul.");
     if (exp.length > 1010) return message.channel.send("<:warn:600349289427894272> Le calcul est trop long.");
-    if (exp.includes("°")) exp = exp.replace(/°/g, "deg");
+
     let result;
     try {
         result = math.evaluate(exp);

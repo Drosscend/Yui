@@ -13,16 +13,6 @@ exports.run = async (client, message, args) => {
 
     fortniteClient.user(user, platform).then(tdata => {
         if(tdata.code === 404) return message.channel.send(`Joueur ${user} introuvable sur la plateforme ${platform}`);
-        //var embed = new Discord.RichEmbed()
-        //    .setTitle(tdata.username)
-        //    .setURL(tdata.url)
-        //    .setDescription(message.language.get('FORTNITE_DESC', platform, user)+'\nID: '+tdata.id)
-        //    if(tdata.stats.solo) embed.addField('Solo', message.language.get('FORTNITE_SOLO_STATS', tdata), true);
-        //    if(tdata.stats.duo) embed.addField('Duo', message.language.get('FORTNITE_DUO_STATS', tdata), true);
-        //    if(tdata.stats.squad) embed.addField('Squad', message.language.get('FORTNITE_SQUAD_STATS', tdata), true);
-        //    if(tdata.stats.lifetime) embed.addField('Lifetime', message.language.get('FORTNITE_LIFETIME_STATS', tdata), true);
-        //    embed.setColor(data.embed.color)
-        //    .setFooter(data.embed.footer)
 
         message.channel.send({embed: {
             color: 0xDF9C9D,
