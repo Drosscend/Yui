@@ -4,7 +4,7 @@
   "description": "Yui (ユイ, Yui ) est une Intelligence Artificielle (IA), elle est là pour vous aider dans la gestion de votre serveur. Son nom officiel est Yui-MHCP001 (Mental Health Counseling Program 001).",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node shard.js",
     "postinstall": "node setup.js"
   },
   "engines": {
