@@ -1,8 +1,13 @@
 'use strict';
 
 module.exports = async (client, message) => {
-
-  if (message.author.bot) return;
+    
+  if (message.author.bot) {
+    return;
+  }
+  if (!message.channel.permissionsFor(message.guild.me).missing("SEND_MESSAGES")) {
+    return;
+  }
 
   const settings = message.settings = client.getSettings(message.guild);
 
