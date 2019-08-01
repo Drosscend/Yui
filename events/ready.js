@@ -4,6 +4,8 @@ const logo = require('asciiart-logo');
 
 module.exports = async client => {
 
+  client.logger.log("===================================================");
+
   await console.log(
     logo({
       name: `${client.user.username}`,

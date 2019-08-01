@@ -40,6 +40,7 @@ const init = async () => {
   });
 
   const evtFiles = await readdir("./events/");
+  client.logger.log("===================================================");
   client.logger.log(`Chargement d'un total de ${evtFiles.length} events.`);
   evtFiles.forEach(file => {
     const eventName = file.split(".")[0];
@@ -49,6 +50,7 @@ const init = async () => {
   });
 
   const Modules = await readdir("./modules/");
+  client.logger.log("===================================================");
   client.logger.log(`Chargements d'un total de ${Modules.length} modules.`);
   Modules.forEach(file => {
     const moduleName = file.split(".")[0];
