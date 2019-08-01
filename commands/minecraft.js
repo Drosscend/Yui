@@ -19,9 +19,6 @@ exports.run = async (client, message, args) => {
             else return message.channel.send("<:warn:600349289427894272> Une erreur est survenue.");
         }
 
-        request('https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Success&t=mc.hypixel.net', function (err, r, b) {
-            var url = `https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Success&t=${ip}`;
-
             snekfetch.get(url).then(r => {
                 message.channel.send({embed: {
                     color: 0xDF9C9D,
@@ -59,10 +56,6 @@ exports.run = async (client, message, args) => {
                     }
                 });
             });
-
-            
-        });
-
         
     });
 
