@@ -5,7 +5,8 @@ exports.run = async (client, message, args) => {
     const settings = client.getSettings(message.guild);
 
     if (!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.channel.send("<:forbidden:600349288823783449> Je n'es pas la permission **MANAGE_CHANNELS** sur ce serveur.");
-    
+    if (!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.channel.send("<:forbidden:600349288823783449> Je n'es pas la permission **MANAGE_ROLES** sur ce serveur.");
+
     if (!args[0]) {return message.channel.send("<:warn:600349289427894272> Veuillez indiquer le nom d\'une personne.");}
 
     var reason = args.slice(1).join(' ');
@@ -29,9 +30,30 @@ exports.run = async (client, message, args) => {
 
     if (member.hasPermission("MANAGE_GUILD")) return message.channel.send("<:forbidden:600349288823783449> Je ne peux pas le mute, il doit avoir la permission de gérer le serveur.");
 
-    message.guild.channels.forEach(ch => ch.overwritePermissions(member.user, {SEND_MESSAGES:false,ADD_REACTIONS:false}));
+    let muterole = message.guild.roles.find(`name`, "muted");
 
-    message.channel.send(`**${member.user.tag}** est mute pour **${reason}** !`);
+    if(!muterole){
+        try{
+          muterole = await message.guild.createRole({
+            name: "muted",
+            color: "#000000",
+            permissions:[]
+          })
+          message.guild.channels.forEach(async (channel, id) => {
+            await channel.overwritePermissions(muterole, {
+              SEND_MESSAGES: false,
+              ADD_REACTIONS: false
+            });
+          });
+        }catch(e){
+          message.channel.send(`<:forbidden:600349288823783449> Une erreur est survenue.\n \`\`\`JS\n${e.stack}\`\`\``);
+        }
+      }
+
+    await(member.addRole(muterole.id))
+    .then((member) => {
+        return message.channel.send(`**${member.user.tag}** est mute pour **${reason}** !`);
+    })
 
     var modlogs = message.guild.channels.find(c => c.name === settings.modLogChannel);
     if (!modlogs) return message.channel.send("Si vous voulez avoir un récapitulatif des sanctions merci de créer un channel **mod-log** ou d'en configurer un avec la commande \"setting\".")
