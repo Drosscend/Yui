@@ -2,7 +2,6 @@
 
 exports.run = async (client, message) => {
 
-    if (!message.guild.available) return client.logger.info(`Guild "${message.guild.name}" (${message.guild.id}) is unavailable.`);
     if (!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send("<:forbidden:600349288823783449> Je n'es pas la permission **BAN_MEMBERS** sur ce serveur.");
 
     message.guild.fetchBans()
