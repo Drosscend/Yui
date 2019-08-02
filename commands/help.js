@@ -5,7 +5,7 @@ exports.run = (client, message, args, level) => {
     let embedFields = [];
     if (message.author.id == message.client.config.ownerID) {
       embedFields.push({
-        name: `:bust_in_silhouette: **Owner** (${client.commands.filter(filters => filters.help.category === "Owner").size} commandes)`,
+        name: `<:forbidden:600349288823783449> **Owner** (${client.commands.filter(filters => filters.help.category === "Owner").size} commandes)`,
         value: client.commands.filter(filters => filters.help.category === "Owner")
           .map(name => name.help.name).join(", "),
       });
@@ -16,12 +16,12 @@ exports.run = (client, message, args, level) => {
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({
-      name: `:tools: **Configuration** (${client.commands.filter(filters => filters.help.category === "Config").size} commandes)`,
+      name: `<:settings:600349289394470923> **Configuration** (${client.commands.filter(filters => filters.help.category === "Config").size} commandes)`,
       value: client.commands.filter(filters => filters.help.category === "Config")
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({
-      name: `<:banhamer:600352893140205572> **Modération** (${client.commands.filter(filters => filters.help.category === "Modération").size} commandes)`,
+      name: `<:alarm:600349286328172545> **Modération** (${client.commands.filter(filters => filters.help.category === "Modération").size} commandes)`,
       value: client.commands.filter(filters => filters.help.category === "Modération")
        .map(name => name.help.name).join(", "),
     });
@@ -31,12 +31,12 @@ exports.run = (client, message, args, level) => {
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({
-      name: `:game_die: **Fun** (${client.commands.filter(filters => filters.help.category === "Fun").size} commandes)`,
+      name: `:tada: **Fun** (${client.commands.filter(filters => filters.help.category === "Fun").size} commandes)`,
       value: client.commands.filter(filters => filters.help.category === "Fun")
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({
-      name: `<:browser1:600349429597470740> **Images** (${client.commands.filter(filters => filters.help.category === "Images").size} commandes)`,
+      name: `<:picture:605752181173256202> **Images** (${client.commands.filter(filters => filters.help.category === "Images").size} commandes)`,
       value: client.commands.filter(filters => filters.help.category === "Images")
         .map(name => name.help.name).join(", "),
     });
