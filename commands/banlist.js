@@ -1,5 +1,5 @@
 "use strict";
-
+const { RichEmbed } = require("discord.js");
 exports.run = async (client, message) => {
 
     if (!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send("<:forbidden:600349288823783449> Je n'es pas la permission **BAN_MEMBERS** sur ce serveur.");
@@ -12,9 +12,24 @@ exports.run = async (client, message) => {
             const bList = Array.from(obj);
             if (bList.length < 1) return message.author.send(`Il n'y a pas d'utilisateurs bannis dans **${message.guild.name}**.`);
             let index = 0;
-            const embed = new RichEmbed().setTitle(`Liste des personnes ban pour ${message.guild.name}`).setDescription(`${bList.map(bl => `**${++index} -** ${bl.user}`).join("\n")}`);
-            message.author.send({embed});
-            message.react("👌");
+
+            message.author.send({
+              embed: {
+                  color: 0xDF9C9D,
+                  author: {
+                      name: message.author.username,
+                      icon_url: message.author.displayAvatarURL
+                  },
+                  footer: {
+                      icon_url: client.user.displayAvatarURL,
+                      text: client.user.username
+                  },
+                  timestamp: new Date(),
+                  description: `${bList.map(bl => `**${++index} -** ${bl.user}`).join("\n")}`,
+                  title:`Liste des personnes ban pour ${message.guild.name}`
+              }
+          })
+            message.channel.send("La liste des personnes ban vous a été envoyé en DM.");
         })
 
 };
