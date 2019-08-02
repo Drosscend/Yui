@@ -5,48 +5,48 @@ exports.run = (client, message, args, level) => {
     let embedFields = [];
     if (message.author.id == message.client.config.ownerID) {
       embedFields.push({
-        name: "**Owner**",
+        name: `:bust_in_silhouette: **Owner** (${client.commands.filter(filters => filters.help.category === "Owner").size} commandes)`,
         value: client.commands.filter(filters => filters.help.category === "Owner")
           .map(name => name.help.name).join(", "),
       });
     }
     embedFields.push({
-      name: "**Bot**",
+      name: `:robot: **Bot** (${client.commands.filter(filters => filters.help.category === "Bot").size} commandes)`,
       value: client.commands.filter(filters => filters.help.category === "Bot")
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({
-      name: "**Configuration**",
+      name: `:tools: **Configuration** (${client.commands.filter(filters => filters.help.category === "Config").size} commandes)`,
       value: client.commands.filter(filters => filters.help.category === "Config")
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({
-      name: "**Modération**",
+      name: `<:banhamer:600352893140205572> **Modération** (${client.commands.filter(filters => filters.help.category === "Modération").size} commandes)`,
       value: client.commands.filter(filters => filters.help.category === "Modération")
        .map(name => name.help.name).join(", "),
     });
     embedFields.push({
-      name: "**Divers**",
+      name: `<:browser1:600349429597470740> **Divers** (${client.commands.filter(filters => filters.help.category === "Divers").size} commandes)`,
      value: client.commands.filter(filters => filters.help.category === "Divers")
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({
-      name: "**Fun**",
+      name: `:game_die: **Fun** (${client.commands.filter(filters => filters.help.category === "Fun").size} commandes)`,
       value: client.commands.filter(filters => filters.help.category === "Fun")
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({
-      name: "**Images**",
+      name: `<:browser1:600349429597470740> **Images** (${client.commands.filter(filters => filters.help.category === "Images").size} commandes)`,
       value: client.commands.filter(filters => filters.help.category === "Images")
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({
-      name: "**ImagesNSFW**",
+      name: `:underage: **ImagesNSFW** (${client.commands.filter(filters => filters.help.category === "ImagesNSFW").size} commandes)`,
       value: client.commands.filter(filters => filters.help.category === "ImagesNSFW")
         .map(name => name.help.name).join(", "),
     });
     embedFields.push({
-      name: "**Musique**",
+      name: `:musical_note: **Musique** (${client.commands.filter(filters => filters.help.category === "Music").size} commandes)`,
       value: client.commands.filter(filters => filters.help.category === "Music")
         .map(name => name.help.name).join(", "),
     });
