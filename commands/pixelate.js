@@ -26,7 +26,7 @@ exports.run = async (client, message, args) => {
 
     get(`https://eclyssia-api.tk/api/v1/pixelate?url=${member.user.displayAvatarURL}&username=${member.user.username}`, {  responseType: 'arraybuffer'})
         .then((response) => {
-            message.channel.send("<:browser1:600349429597470740> Image **cry** générée par **neko-love.xyz**:",{
+            message.channel.send("<:picture:605752181173256202> Image **cry** générée par **neko-love.xyz**:",{
                 file: {
                     attachment: response.data,
                     name: "pixelate.png"

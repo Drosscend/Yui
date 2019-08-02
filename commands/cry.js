@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
                             text: client.user.username
                         },
                         timestamp: new Date(),
-                        description: `<:browser1:600349429597470740> Image **cry** générée par **neko-love.xyz**: [Lien de l'image](${parsedData.url})`,
+                        description: `<:picture:605752181173256202> Image **cry** générée par **neko-love.xyz**: [Lien de l'image](${parsedData.url})`,
                         image: {
                             url: parsedData.url
                         },

@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
 
     get(`https://eclyssia-api.tk/api/v1/blood?url=${member.user.displayAvatarURL}`, {  responseType: 'arraybuffer'})
         .then((response) => {
-            message.channel.send("<:browser1:600349429597470740> Image **blood** générée par **eclyssia-api.tk**:",{
+            message.channel.send("<:picture:605752181173256202> Image **blood** générée par **eclyssia-api.tk**:",{
                 file: {
                     attachment: response.data,
                     name: "blood.png"
