@@ -7,6 +7,7 @@ exports.run = async (client, message, args) => {
     if (talkedRecently.has(message.author.id)) {
         return message.channel.send(`${message.author} Attendez 10 secondes avant de taper à nouveau ce qui suit`);
     }
+
     get("https://neko-love.xyz/api/v1/hug", (res) => {
         const { statusCode } = res;
         if (statusCode != 200) {

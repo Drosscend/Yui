@@ -5,7 +5,7 @@ const { inspect } = require("util");
 exports.run = async (client, message, [action, key, ...value]) => {
 
   const defaults = client.settings.get("default");
-  
+
   if (action === "add") {
     if (!key) return message.reply("<:warn:600349289427894272> Veuillez spécifier une clé à ajoutée.");
     if (!defaults[key]) return message.reply("<:warn:600349289427894272> Cette clé existe déja dans les réglages.");

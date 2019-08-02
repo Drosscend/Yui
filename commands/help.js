@@ -1,6 +1,7 @@
 "use strict";
 
 exports.run = (client, message, args, level) => {
+
   if (!args[0]) {
     let embedFields = [];
     if (message.author.id == message.client.config.ownerID) {

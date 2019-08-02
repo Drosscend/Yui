@@ -6,6 +6,7 @@ exports.run = async (client, message, args) => {
     if (talkedRecently.has(message.author.id)) {
         return message.channel.send(`${message.author} Attendez 10 secondes avant de taper à nouveau ce qui suit`);
     }
+
     const search = args.slice(0)[0];
 
     let {member} = message;
