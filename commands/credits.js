@@ -17,8 +17,9 @@ exports.run = async (client, message) => {
                 text: client.user.username
             },
             timestamp: new Date(),
-            description: `Tout d'abord merci à toutes les personnes que je risque d'oublier lors de l'énumération des noms :)\n
-            -[Ota](https://discord.gg/rX9Qgnu): pour l'aide au niveau du code.\n
+            description: `
+            -[Ota](https://github.com/Steven-Debande)\n
+            -[PsyKo ☾](https://github.com/SFallTech)\n
             -Emojis fait par [Vectors Market](https://www.flaticon.com/authors/vectors-market) pour [Flaticon](https://www.flaticon.com/) est titulaire d'une licence délivrée par [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).`,
         }
     })
