@@ -29,6 +29,8 @@ exports.run = async (client, message, args) => {
 
     let muterole = message.guild.roles.find(`name`, "muted");
 
+    if (!member.roles.has(muterole.id)) return message.channel.send(`**${member.user.tag}** n'est pas mute.`);
+
     await(member.removeRole(muterole.id))
     .then((member) => {
         return message.channel.send(`**${member.user.tag}** est bien unmute.`);
