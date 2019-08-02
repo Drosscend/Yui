@@ -14,7 +14,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
     defaults[key] = value.join(" ");
   
     client.settings.set("default", defaults);
-    message.reply(`${key} à bien été ajouté avec la valuer ${value.join(" ")}.`);
+    message.reply(`\`${key}\` à bien été ajouté avec la valuer \`${value.join(" ")}\`.`);
   } else
   
   if (action === "edit") {
@@ -25,7 +25,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
     defaults[key] = value.join(" ");
 
     client.settings.set("default", defaults);
-    message.reply(`${key} à bien été éditée à ${value.join(" ")}.`);
+    message.reply(`\`${key}\` à bien été éditée à \`${value.join(" ")}\`.`);
   } else
   
   if (action === "del") {
@@ -44,7 +44,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
         client.settings.set(guildid, conf);
       }
       
-      message.reply(`${key} à bien été supprimé.`);
+      message.reply(`\`${key}\` à bien été supprimé.`);
     } else
     if (["n","no","cancel", "non"].includes(response)) {
       message.reply("Action annulée.");
