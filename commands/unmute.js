@@ -27,7 +27,7 @@ exports.run = async (client, message, args) => {
 
     if (member.hasPermission("MANAGE_GUILD")) return message.channel.send("<:forbidden:600349288823783449> Je ne peux pas le unmute, il doit avoir la permission de gérer le serveur.");
 
-    let muterole = message.guild.roles.find(`name`, "muted");
+    let muterole = message.guild.roles.find(x => x.name === "muted");
 
     if (!member.roles.has(muterole.id)) return message.channel.send(`**${member.user.tag}** n'est pas mute.`);
 
