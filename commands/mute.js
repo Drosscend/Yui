@@ -32,6 +32,8 @@ exports.run = async (client, message, args) => {
 
     let muterole = message.guild.roles.find(`name`, "muted");
 
+    if (member.roles.has(muterole.id)) return message.channel.send(`**${member.user.tag}** est déja mute.`);
+
     if(!muterole){
         try{
           muterole = await message.guild.createRole({
@@ -52,7 +54,7 @@ exports.run = async (client, message, args) => {
 
     await(member.addRole(muterole.id))
     .then((member) => {
-        return message.channel.send(`**${member.user.tag}** est mute pour **${reason}** !`);
+        return message.channel.send(`**${member.user.tag}** est mute pour **${reason}** !\nPenssez que le role \`muted\` est en dessus du rôle de la personne à mute.`);
     })
 
     var modlogs = message.guild.channels.find(c => c.name === settings.modLogChannel);
