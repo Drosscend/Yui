@@ -10,8 +10,8 @@ exports.run = async (client, message, args) => {
     var user = args[0];
     var text = args.slice(1).join(' ');
 
-    if(!user) return m.edit("<:warn:600349289427894272> Vous devez entrer le pseudo twitter de quelqu'un sans le \"@\"!");
-    if(!text) return m.edit("<:warn:600349289427894272> Vous devez entrer un message !");
+    if(!user) return message.channel.send("<:warn:600349289427894272> Vous devez entrer le pseudo twitter de quelqu'un sans le \"@\"!");
+    if(!text) return message.channel.send("<:warn:600349289427894272> Vous devez entrer un message !");
 
     message.channel.send("Veuillez patientez").then(async m => {
 
