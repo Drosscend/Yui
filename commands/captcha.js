@@ -23,16 +23,29 @@ exports.run = async (client, message, args) => {
     };
 
 
-    get(`https://eclyssia-api.tk/api/v1/captcha?url=${member.user.displayAvatarURL}&username=${member.user.username}`, {  responseType: 'arraybuffer'})
-        .then((response) => {
-            message.channel.send("<:picture:605752181173256202> Image **captcha** générée par **eclyssia-api.tk**:",{
-                file: {
-                    attachment: response.data,
-                    name: "captcha.png"
-                }
-            })
-        
+    let target = member.user
+    let username = member.user.username
+    const profilepic = target.displayAvatarURL;
+    message.channel.send("<:picture:605752181173256202> Génération de l'image...").then(msg => {
+        get(`https://eclyssia-api.tk/api/v1/captcha?url=${profilepic}&username=${username}`, {
+            responseType: "arraybuffer"
         })
+        .then(res =>
+            message.channel.send("<:picture:605752181173256202> Image **captcha** générée par **eclyssia-api.tk**:",{
+                file: { attachment: res.data, name: "image.png" }
+            })
+            )
+        .then(() => msg.delete())
+        .catch(err => {
+            if (err) {
+            msg.delete();
+                message.channel.send(
+                    "Une erreur est survenue avec l'api, veuillez réessayer !"
+                );
+            }
+        });
+    });
+
         talkedRecently.add(message.author.id);
         setTimeout(() => {
           

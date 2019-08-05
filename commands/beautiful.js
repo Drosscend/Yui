@@ -6,6 +6,7 @@ exports.run = async (client, message, args) => {
     if (talkedRecently.has(message.author.id)) {
         return message.channel.send(`${message.author} Attendez 10 secondes avant de taper à nouveau ce qui suit`);
     }
+
     const search = args.slice(0)[0];
 
     let {member} = message;
@@ -21,24 +22,33 @@ exports.run = async (client, message, args) => {
             return message.channel.send(client.findersUtil.formatMembers(client, member));
         }
     };
-
-
-    get(`https://eclyssia-api.tk/api/v1/beautiful?url=${member.user.displayAvatarURL}`, {  responseType: 'arraybuffer'})
-        .then((response) => {
-            message.channel.send("<:picture:605752181173256202> Image **beautiful** générée par **eclyssia-api.tk**:",{
-                file: {
-                    attachment: response.data,
-                    name: "beautiful.png"
-                }
-            })
-        
-        })
     
-        talkedRecently.add(message.author.id);
-        setTimeout(() => {
-          
-          talkedRecently.delete(message.author.id);
-        }, 10000);
+    let target = member.user
+    const profilepic = target.displayAvatarURL;
+    message.channel.send("<:picture:605752181173256202> Génération de l'image...").then(msg => {
+        get(`https://eclyssia-api.tk/api/v1/beautiful?url=${profilepic}`, {
+            responseType: "arraybuffer"
+        })
+        .then(res =>
+            message.channel.send("<:picture:605752181173256202> Image **beautiful** générée par **eclyssia-api.tk**:",{
+                file: { attachment: res.data, name: "image.png" }
+            })
+            )
+        .then(() => msg.delete())
+        .catch(err => {
+            if (err) {
+                msg.delete();
+                message.channel.send(
+                    "Une erreur est survenue avec l'api, veuillez réessayer !"
+                );
+            }
+        });
+    });
+
+    talkedRecently.add(message.author.id);
+    setTimeout(() => {
+      talkedRecently.delete(message.author.id);
+    }, 10000);
 
 }
 

@@ -24,22 +24,33 @@ exports.run = async (client, message, args) => {
     };
 
 
-    get(`https://eclyssia-api.tk/api/v1/triggered?url=${member.user.displayAvatarURL}&username=${member.user.username}`, {  responseType: 'arraybuffer'})
-        .then((response) => {
-            message.channel.send("<:picture:605752181173256202> Image **triggered** générée par **eclyssia-api.tk**:",{
-                file: {
-                    attachment: response.data,
-                    name: "triggered.gif"
-                }
-            })
-        
+    let target = member.user
+    const profilepic = target.displayAvatarURL;
+    message.channel.send("<:picture:605752181173256202> Génération de l'image...").then(msg => {
+        get(`https://eclyssia-api.tk/api/v1/triggered?url=${profilepic}`, {
+            responseType: "arraybuffer"
         })
+        .then(res =>
+            message.channel.send("<:picture:605752181173256202> Image **triggered** générée par **eclyssia-api.tk**:",{
+                file: { attachment: res.data, name: "image.gif" }
+            })
+            )
+        .then(() => msg.delete())
+        .catch(err => {
+            if (err) {
+            msg.delete();
+                message.channel.send(
+                    "Une erreur est survenue avec l'api, veuillez réessayer !"
+                );
+            }
+        });
+    });
         
-        talkedRecently.add(message.author.id);
-        setTimeout(() => {
-          
+    talkedRecently.add(message.author.id);
+        setTimeout(() => {  
           talkedRecently.delete(message.author.id);
         }, 10000);
+
 }
 
 exports.conf = {
