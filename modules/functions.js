@@ -22,7 +22,6 @@ module.exports = (client) => {
     "LogChannel": "log",
     "modRole": "Moderateur",
     "adminRole": "Administrateur",
-    "systemNotice": "true",
     "welcomeChannel": "welcome",
     "welcomeEnabled": "false"
   };
