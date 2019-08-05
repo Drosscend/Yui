@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
     if(!args[0]) return message.channel.send('<:warn:600349289427894272> Veuillez spécifier un nom de role sans le **@**.');
 
     var role = message.content.split(" ").slice(1).join(" ");
-    let foundRole = message.guild.roles.find(`name`, role);
+    let foundRole = message.guild.roles.find(x => x.name === role);
     if(!foundRole){
       return message.channel.send("<:warn:600349289427894272> Veuillez spécifier un nom de role sans le **@**.");
     }
