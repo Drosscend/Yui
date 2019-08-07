@@ -4,8 +4,8 @@ exports.run = async (client, message, args) => {
 
     if (!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.channel.send('<:forbidden:600349288823783449> Je n\'es pas la permission **Manage Messages** sur ce serveur.');
     if(!args[0]) return message.channel.send('<:warn:600349289427894272> Veuillez spécifier un nombre de messages à supprimer.');
-    if (isNaN(args[0])) return message.channel.send('<:warn:600349289427894272> Veuillez fournir un nombre exact.');
-    if (args[0] < 1) return message.channel.send('<:warn:600349289427894272> Veuillez fournir un nombre supérieur à 1.');
+    if (isNaN(args[0])) return message.channel.send('<:warn:600349289427894272> Veuillez fournir un nombre.');
+    if (args[0] < 1) return message.channel.send('<:warn:600349289427894272> Veuillez fournir un nombre supérieur ou égal à 1.');
     if (args[0] > 100) return message.channel.send('<:warn:600349289427894272> Veuillez fournir un nombre inférieur à 100.');
 
 

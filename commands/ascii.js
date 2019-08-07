@@ -3,10 +3,9 @@ var Ascii = require('ascii-art');
 
 exports.run = async (client, message, args) => {
 
-        // Gets the text 
         var text = args.join(' ');
-        if(!text) return message.channel.send("<:warn:600349289427894272> Veuillez entrer un texte valide!");
-        if(text.length > 20) return message.channel.send("<:warn:600349289427894272> Veuillez entrer un texte valide (inférieur à 20 caractères) !");
+        if(!text) return message.channel.send("<:warn:600349289427894272> Veuillez entrer un texte!");
+        if(text.length > 20) return message.channel.send("<:warn:600349289427894272> Veuillez entrer un texte inférieur ou égal à 20 caractères !");
     
         Ascii.font(text, 'Doom', function(rendered){
             message.channel.send('```'+rendered+'```');

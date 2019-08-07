@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
     if (!bugmessage) {
         return message.channel.send("<:warn:600349289427894272> Veuillez indiquer votre bug et mettre l'url du screen du bug.");
     }
-    if (!bugmessage>1000) {
+    if (bugmessage.length > 1000) {
         return message.channel.send("<:warn:600349289427894272> Le maximum de caractères est de 1000.");
     }
 
@@ -32,16 +32,8 @@ exports.run = async (client, message, args) => {
                 value: message.author.username,
                 inline: true,
                 }, {
-                name: "ID de l'autheur:",
-                value: message.author.id,
-                inline: true,
-                }, {
                 name: "Dans le serveur:",
                 value: message.guild.name,
-                inline: true,
-                }, {
-                name: "ID du serveur:",
-                value: message.guild.id,
                 inline: true,
                 }, {
                 name: "Bug:",

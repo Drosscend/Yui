@@ -11,6 +11,9 @@ exports.run = async (client, message, args) => {
     if (!suggestionmessage) {
         return message.channel.send("<:warn:600349289427894272> Veuillez indiquer votre suggestion.");
     }
+    if (suggestionmessage.length > 1000) {
+        return message.channel.send("<:warn:600349289427894272> Le maximum de caractères est de 1000.");
+    }
     client.channels.get("601709073469145117").send({
         embed: {
             color: 0xDF9C9D,
@@ -28,16 +31,8 @@ exports.run = async (client, message, args) => {
                 value: message.author.username,
                 inline: true,
                 }, {
-                name: "ID de l'autheur:",
-                value: message.author.id,
-                inline: true,
-                }, {
                 name: "Dans le serveur:",
                 value: message.guild.name,
-                inline: true,
-                }, {
-                name: "ID du serveur:",
-                value: message.guild.id,
                 inline: true,
                 }, {
                 name: "Suggestion:",

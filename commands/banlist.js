@@ -10,25 +10,37 @@ exports.run = async (client, message) => {
                 user: `${b.username}#${b.discriminator}`
             }));
             const bList = Array.from(obj);
-            if (bList.length < 1) return message.author.send(`Il n'y a pas d'utilisateurs bannis dans **${message.guild.name}**.`);
+            if (bList.length < 1) return message.author.send(`Il n'y a pas d'utilisateurs bannis dans **${message.guild.name}**.`).catch(err => {
+                if (err) {
+                    message.channel.send(
+                        "<:warn:600349289427894272> Une erreur est survenue, avez vous activer vos DM dans ce serveur?"
+                    );
+                }
+            })
             let index = 0;
 
             message.author.send({
-              embed: {
-                  color: 0xDF9C9D,
-                  author: {
-                      name: message.author.username,
-                      icon_url: message.author.displayAvatarURL
-                  },
-                  footer: {
-                      icon_url: client.user.displayAvatarURL,
-                      text: client.user.username
-                  },
-                  timestamp: new Date(),
-                  description: `${bList.map(bl => `**${++index} -** ${bl.user}`).join("\n")}`,
-                  title:`Liste des personnes ban pour ${message.guild.name}`
-              }
-          })
+                embed: {
+                    color: 0xDF9C9D,
+                    author: {
+                        name: message.author.username,
+                        icon_url: message.author.displayAvatarURL
+                    },
+                    footer: {
+                        icon_url: client.user.displayAvatarURL,
+                        text: client.user.username
+                    },
+                    timestamp: new Date(),
+                    description: `${bList.map(bl => `**${++index} -** ${bl.user}`).join("\n")}`,
+                    title:`Liste des personnes ban pour ${message.guild.name}`
+                }
+            }).catch(err => {
+                if (err) {
+                    message.channel.send(
+                        "<:warn:600349289427894272> Une erreur est survenue, avez vous activer vos DM dans ce serveur?"
+                    );
+                }
+            })
             message.channel.send("La liste des personnes ban vous a été envoyé en DM.");
         })
 

@@ -12,13 +12,13 @@ exports.run = async (client, message, args) => {
         return message.channel.send("<:warn:600349289427894272> Veuillez taper un nombre!");
     }
     else if(!limit) {
-        return message.channel.send("<:warn:600349289427894272> Veuillez taper un nombre supérieur **0**!");
+        return message.channel.send("<:warn:600349289427894272> Veuillez taper un nombre!");
     }
-    else if(limit == 0) {
-        return message.channel.send("<:warn:600349289427894272> Veuillez taper un nombre supérieur à **0**!");
+    else if(limit < 1) {
+        return message.channel.send("<:warn:600349289427894272> Veuillez taper un nombre supérieur ou égal à **1**!");
     }
     else if(limit > 1000) {
-        return message.channel.send("<:warn:600349289427894272> Veuillez taper un nombre inférieur **1000**!");
+        return message.channel.send("<:warn:600349289427894272> Veuillez taper un nombre inférieur ou égal à **1000**!");
     }
     
       message.channel.send(`Vous avez **1** minute pour trouver un nombre compris entre **0** et **${Math.round(limit)}**. Bonne chance!`).then(async(m) => {
