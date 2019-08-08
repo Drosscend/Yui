@@ -29,6 +29,7 @@ exports.run = async (client, message, args) => {
         var checkbot = "de l'humain";
     }
     
+    /* Status and game */
     let status;
     switch (member.user.presence.status) {
         case 'online':
@@ -44,6 +45,8 @@ exports.run = async (client, message, args) => {
             status = `<:offline:600352893471555614> Offline`;
             break;
     }
+
+    if (member.user.presence.game.name) status = `${status}\n🎮 Joue à **${member.user.presence.game.name}**`;
 
         message.channel.send({
             embed: {
@@ -87,7 +90,7 @@ exports.run = async (client, message, args) => {
                     inline: true
                 }, {
                     name: "Roles:",
-                    value: message.guild.members.get(user.id).roles.array().map(g => g).join(', ')
+                    value: member.roles.filter(r => r.id !== message.guild.id).sort((a, b) => b.position - a.position).map(r => r.toString()).join(', ') || `Aucun`
                 }
                 ]
             }
