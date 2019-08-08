@@ -26,7 +26,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
     if (!settings[key]) return message.reply("<:warn:600349289427894272> Cette clé n'existe pas dans les réglages.");
     if (!overrides[key]) return message.reply("<:warn:600349289427894272> Cette clée utilise déjà les valeurs par défaut.");
     
-    const response = await this.client.awaitReply(message, `<:warn:600349289427894272> Êtes-vous sûr de vouloir réinitialise \`${key}\` à la valeur par défaut \`${defaults[key]}\`?. Répondres par **oui** ou **non**`);
+    const response = await client.awaitReply(message, `<:warn:600349289427894272> Êtes-vous sûr de vouloir réinitialise \`${key}\` à la valeur par défaut \`${defaults[key]}\`?. Répondres par **oui** ou **non**`);
 
     if (["y", "yes", "oui"].includes(response.toLowerCase())) {
       client.settings.delete(message.guild.id, key);
