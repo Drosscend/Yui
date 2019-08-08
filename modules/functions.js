@@ -68,7 +68,7 @@ module.exports = (client) => {
     } else if (client.aliases.has(commandName)) {
       command = client.commands.get(client.aliases.get(commandName));
     }
-    if (!command) return `La commande \`${commandName}\`ne semble pas éxistée,nie en allias. Essayez encore une fois !`;
+    if (!command) return `La commande \`${commandName}\`ne semble pas éxistée, nie en allias. Essayez encore une fois !`;
   
     if (command.shutdown) {
       await command.shutdown(client);
