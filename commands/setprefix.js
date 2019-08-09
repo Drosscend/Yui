@@ -15,6 +15,7 @@ exports.run = async (client, message, args) => {
     if (action === "edit") {
         if (!joinedValue) return message.reply("<:warn:600349289427894272> Veuillez spécifier une nouvelle valeur.");
         if (joinedValue === settings[key]) return message.reply("<:barrier:600349286546276362> Ce paramètre à déja cette valeur.");
+        if (joinedValue.length > 4) return message.channel.send("<:warn:600349289427894272> Il est préférable de mettre un prefix inférieur à 4 caractères.");
 
         if (!client.settings.has(message.guild.id)) client.settings.set(message.guild.id, {});
 
